@@ -19,7 +19,7 @@ class mx_integritas_automatizacion_soporte(models.Model):
     def _value_pc(self):
         print(self.name)
         if self.date_last_stage_update != False:
-            days = 0
+            days = 16
             days_added = datetime.timedelta(days = days)
             future_date_and_time = self.date_last_stage_update + days_added
             date_time_format = future_date_and_time.strftime("%d/%m/%Y %H:%M:%S")
@@ -96,8 +96,8 @@ class Correo:
     password = ""
     def __init__(self):
         print("INicializzzz")
-        self.sender = 'edgar.molina@integritas.mx'
-        self.password = 'EdgarDevelopment94'
+        self.sender = 'development@integritas.mx'
+        self.password = 'Djttr-01'
         
         self.smtpObj = smtplib.SMTP(host='smtp.gmail.com', port=587)
         self.smtpObj.ehlo()
