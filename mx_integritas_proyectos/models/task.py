@@ -11,6 +11,6 @@ class Task(models.Model):
     @api.multi
     def _set_date_gtm(self):
     	for stock in self:
-    		stock.date_now_gmt = datetime.datetime.now().strftime("%m %d %Y %H:%M:%S GMT-00:00 %Y")
+    		stock.date_now_gmt = datetime.now().strftime("%m %d %Y %H:%M:%S GMT-00:00 %Y")
         
 
