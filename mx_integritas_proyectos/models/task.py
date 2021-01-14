@@ -6,7 +6,7 @@ class Task(models.Model):
     _inherit = ['project.task']
 
     date_assign = fields.Datetime(string='Assigning Date', index=True, copy=False, readonly=False)
-    date_now_gmt = fields.Datetime(string='Date Now', index=True, copy=False, readonly=False, ,compute='_set_date_gtm')
+    date_now_gmt = fields.Datetime(string='Date Now', index=True, copy=False, readonly=False ,compute='_set_date_gtm')
 
     @api.multi
     def _set_date_gtm(self):
