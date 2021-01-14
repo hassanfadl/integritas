@@ -10,6 +10,7 @@ class Task(models.Model):
 
     @api.multi
     def _set_date_gtm(self):
-    	self.date_now_gmt = datetime.datetime.now()
+    	for stock in self:
+    		stock.date_now_gmt = datetime.datetime.now()
         
 
