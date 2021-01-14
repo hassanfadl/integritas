@@ -1,4 +1,4 @@
-from odoo import _, api, fields, models, tools, pytz, datetime
+from odoo import _, api, fields, models, tools,  datetime
 
 
 class Task(models.Model):
