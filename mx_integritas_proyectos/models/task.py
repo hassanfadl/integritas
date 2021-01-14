@@ -1,5 +1,5 @@
 from odoo import _, api, fields, models, tools
-import datetime
+from datetime import datetime
 
 class Task(models.Model):
     _name = 'project.task'
