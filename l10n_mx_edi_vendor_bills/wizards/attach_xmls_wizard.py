@@ -27,8 +27,8 @@ class AttachXmlsWizard(models.TransientModel):
     def _default_journal(self):
         type_inv = 'in_invoice' if self._context.get(
             'l10n_mx_edi_invoice_type') == 'in' else 'out_invoice'
-        return self.env['account.invoice'].with_context(
-            type=type_inv)._default_journal()
+        return self.env['account.move'].with_context(
+            type=type_inv)._get_default_journal()
 
     @api.model
     def _get_journal_domain(self):
@@ -148,12 +148,12 @@ class AttachXmlsWizard(models.TransientModel):
                 if not tax_group_id or not tax_get:
                     taxes_list['wrong_taxes'].append(name)
                     continue
-                if not tax_get.account_id.id:
+                if not tax_get.cash_basis_base_account_id.id:
                     taxes_list['withno_account'].append(
                         name if name else tax['tax'])
                 else:
                     tax['id'] = tax_get.id
-                    tax['account'] = tax_get.account_id.id
+                    tax['account'] = tax_get.cash_basis_base_account_id.id
                     tax['name'] = name if name else tax['tax']
                     taxes_list['taxes_ids'][index].append(tax)
         return taxes_list
@@ -239,7 +239,7 @@ class AttachXmlsWizard(models.TransientModel):
         """
         wrongfiles = {}
         invoices = {}
-        inv_obj = self.env['account.invoice']
+        inv_obj = self.env['account.move']
         partner_obj = self.env['res.partner']
         currency_obj = self.env['res.currency']
         inv = inv_obj
@@ -250,14 +250,13 @@ class AttachXmlsWizard(models.TransientModel):
             xml_taxes = self._get_xml_data(xml)
         xml_related_uuid = related_invoice = False
         exist_supplier = partner_obj.search(
-            ['&', ('vat', '=', xml_vat_emitter), '|',
-             ('supplier', '=', True), ('customer', '=', True)], limit=1)
+            [('vat', '=', xml_vat_emitter)], limit=1)
         domain = [
             '|', ('partner_id', 'child_of', exist_supplier.id),
             ('partner_id', '=', exist_supplier.id)]
         invoice = xml_folio
         if xml_folio:
-            domain.append(('reference', '=ilike', xml_folio))
+            domain.append(('ref', '=ilike', xml_folio))
         else:
             domain.append(('amount_total', '>=', xml_amount - 1))
             domain.append(('amount_total', '<=', xml_amount + 1))
@@ -276,7 +275,7 @@ class AttachXmlsWizard(models.TransientModel):
         inv_vat_emitter = (
             inv and inv.commercial_partner_id.vat or '').upper()
         inv_amount = inv.amount_total
-        inv_folio = inv.reference or ''
+        inv_folio = inv.ref or ''
         domain = [('l10n_mx_edi_cfdi_name', '!=', False)]
         if exist_supplier:
             domain += [('partner_id', 'child_of', exist_supplier.id)]
@@ -373,7 +372,7 @@ class AttachXmlsWizard(models.TransientModel):
     @api.model
     def _get_xml_data(self, xml):
         """Return data from XML"""
-        inv_obj = self.env['account.invoice']
+        inv_obj = self.env['account.move']
         vat_emitter = xml.Emisor.get('Rfc', '').upper()
         vat_receiver = xml.Receptor.get('Rfc', '').upper()
         amount = float(xml.get('Total', 0.0))
@@ -455,7 +454,6 @@ class AttachXmlsWizard(models.TransientModel):
         return {'wrongfiles': wrongfiles,
                 'invoices': invoices}
 
-    @api.multi
     def create_invoice(
             self, xml, supplier, currency_id, taxes, account_id=False):
         """ Create supplier invoice from xml file
@@ -473,8 +471,8 @@ class AttachXmlsWizard(models.TransientModel):
         :return: the Result of the invoice creation
         :rtype: dict
         """
-        inv_obj = self.env['account.invoice']
-        line_obj = self.env['account.invoice.line']
+        inv_obj = self.env['account.move']
+        line_obj = self.env['account.move.line']
         prod_obj = self.env['product.product']
         prod_supplier_obj = self.env['product.supplierinfo']
         sat_code_obj = self.env['l10n_mx_edi.product.sat.code']
@@ -541,7 +539,7 @@ class AttachXmlsWizard(models.TransientModel):
                     'account_id': account_id,
                     'name': _('FUEL - IEPS'),
                     'quantity': quantity,
-                    'uom_id': uom_id.id,
+                    #'uom_id': uom_id.id,
                     'price_unit': float(rec.get('Importe', 0)) - price,
                 }))
             invoice_line_ids.append((0, 0, {
@@ -549,8 +547,8 @@ class AttachXmlsWizard(models.TransientModel):
                 'account_id': account_id,
                 'name': name,
                 'quantity': float(quantity),
-                'uom_id': uom_id.id,
-                'invoice_line_tax_ids': [(6, 0, line_taxes)],
+                #'uom_id': uom_id.id,
+                'tax_ids': [(6, 0, line_taxes)],
                 'price_unit': float(price),
                 'discount': discount,
             }))
@@ -567,13 +565,13 @@ class AttachXmlsWizard(models.TransientModel):
         uuid = False if xml_tfd is None else xml_tfd.get('UUID', '')
         invoice_id = inv_obj.create({
             'partner_id': supplier.id,
-            'reference': '%s|%s' % (
+            'ref': '%s|%s' % (
                 self.get_xml_folio(xml),
                 uuid.split('-')[0]),
-            'payment_term_id': acc_pay_term.id,
+            'invoice_payment_term_id': acc_pay_term.id,
             'l10n_mx_edi_payment_method_id': payment_method_id.id,
             'l10n_mx_edi_usage': xml.Receptor.get('UsoCFDI'),
-            'date_invoice': date_inv[0],
+            'invoice_date': date_inv[0],
             'currency_id': (
                 currency_id.id or self.env.user.company_id.currency_id.id),
             'invoice_line_ids': invoice_line_ids,
@@ -620,7 +618,7 @@ class AttachXmlsWizard(models.TransientModel):
                         'taxes': ['%s(%s%%)' % (tax_name, tax_percent)],
                     }
                 invoice_id.invoice_line_ids.write({
-                    'invoice_line_tax_ids': [(4, tax.id)]})
+                    'tax_ids': [(4, tax.id)]})
 
             # Global discount used for each line
             # Decimal rounding wrong values could be imported will fix manually
@@ -643,7 +641,7 @@ class AttachXmlsWizard(models.TransientModel):
                 'refund_invoice_ids': [(4, invoice_id.id, 0)]
             })
         invoice_id.l10n_mx_edi_update_sat_status()
-        invoice_id.compute_taxes()
+        #invoice_id.compute_taxes()
         return {'key': True, 'invoice_id': invoice_id.id}
 
     @api.model
@@ -680,8 +678,11 @@ class AttachXmlsWizard(models.TransientModel):
             'company_type': 'company',
             'vat': rfc_emitter,
             'country_id': self.env.ref('base.mx').id,
-            'supplier': True,
-            'customer': False,
+            #'supplier': True,
+            #'customer': False,
+            'supplier_rank' : 1,
+            'property_account_receivable_id': self.env.ref('l10n_mx.1_cuenta105_01').id,
+            'property_account_payable_id': self.env.ref('l10n_mx.1_cuenta201_01').id
         })
         msg = _('This partner was created when invoice %s%s was added from '
                 'a XML file. Please verify that the datas of partner are '
@@ -694,7 +695,6 @@ class AttachXmlsWizard(models.TransientModel):
         """Return the codes that could be used in FUEL"""
         return [str(r) for r in range(15101500, 15101513)]
 
-    @api.multi
     def get_taxes_to_omit(self):
         """Some taxes are not found in the system, but is correct, because that
         taxes should be adds in the invoice like expenses.
