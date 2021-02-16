@@ -10,7 +10,7 @@
         Long description of module's purpose
     """,
 
-    'author': "Integritas",
+    'author': "My Company",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -27,7 +27,6 @@
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-	'data/data.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

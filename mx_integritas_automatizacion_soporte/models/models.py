@@ -15,7 +15,7 @@ class mx_integritas_automatizacion_soporte(models.Model):
     
     fecha_limite_pruebas = fields.Char(compute="_value_pc", string="CAmpo extra",traslate=True)
     
-    
+    @api.multi
     def _value_pc(self):
         print(self.name)
         if self.date_last_stage_update != False:
@@ -27,7 +27,7 @@ class mx_integritas_automatizacion_soporte(models.Model):
         else:
             self.fecha_limite_pruebas = False
 
-    
+    @api.multi   
     def enviar_email(self):
         
         e = Correo()
@@ -109,7 +109,7 @@ class Correo:
             print("----")
             print(self.sender)
             receivers = _from
-            message = """ Estimado """+namePartner+""":\nNo hemos recibido ninguna respuesta de su parte sobre la tarea """+str(task)+""" y en caso de no recibir ningún comentario procederemos a cerrarlo el día de mañana.\n\nQuedamos atentos a sus comentarios.\nReciban un cordial saludo
+            message = """ Estimado """+namePartner+""":\nTe informamos que la etapa de pruebas para la actividad: """+str(task)+""" finalizó el día de ayer, por tal motivo y solo en caso de no recibir ningún comentario adicional de tu parte procederemos a cerrarlo en 3 días a partir de hoy.\n\nReciban un cordial saludo.
             """
             part2 = MIMEText(message, "plain", "utf-8")
             part2['Subject'] = Header("REQUERIMOS UNA ACCIÓN DE SU PARTE", 'utf-8')
