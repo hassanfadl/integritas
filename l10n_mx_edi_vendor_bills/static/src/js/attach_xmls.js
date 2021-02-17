@@ -1,19 +1,14 @@
 odoo.define('l10n_mx_edi_vendor_bills', function (require) {
 "use strict";
-
-var AbstractField = require('web.AbstractField');
-var core = require('web.core');
 var FieldRegistry = require('web.field_registry');
-var field_utils = require('web.field_utils');
+var FieldChar = FieldRegistry.get('char');
 
-var QWeb = core.qweb;
-var _t = core._t;
-
+var _t = require('web.translation')._t;
 
 
-var attachXmlsWizard = AbstractField.extend({
+var attachXmlsWizard = FieldChar.extend({
     template: 'attach_xmls_template',
-    supportedFieldTypes: ['char'],
+
     events: {
         // events drag and drop on the div handler
         'dragenter #dragandrophandler': function(e){
@@ -98,7 +93,7 @@ var attachXmlsWizard = AbstractField.extend({
                     name: _t('Supplier Invoices'),
                     view_type: 'list',
                     view_mode: 'list,form',
-                    res_model: 'account.move',
+                    res_model: 'account.invoice',
                     type: 'ir.actions.act_window',
                     views: [[false, 'list'], [false, 'form']],
                     targe: 'current',
@@ -461,7 +456,6 @@ var attachXmlsWizard = AbstractField.extend({
             self.$el.find('#dndfooter button#show').show();
         });
     },
-    
 });
 
 FieldRegistry.add('attach_xmls_wizard_widget', attachXmlsWizard);
