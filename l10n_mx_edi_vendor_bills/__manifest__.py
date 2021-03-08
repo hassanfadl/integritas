@@ -8,8 +8,8 @@
     'category': 'Localization/Mexico',
     'author': 'Vauxoo,Jarsa',
     'website': 'https://www.vauxoo.com',
-    'depends': [
-        'l10n_mx_edi',
+    'depends': ['base',
+        'l10n_mx_edi','account_accountant'
     ],
     'license': 'LGPL-3',
     'data': [
@@ -17,9 +17,6 @@
         'views/assets.xml',
         'views/account_invoice_view.xml',
         'wizards/attach_xmls_wizard_view.xml',
-    ],
-    'demo': [
-        'demo/ir_attachment.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml',

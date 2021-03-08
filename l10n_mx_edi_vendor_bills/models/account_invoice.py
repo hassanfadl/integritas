@@ -15,30 +15,28 @@ CFDI_SAT_QR_STATE = {
 
 
 class AccountInvoice(models.Model):
-    _inherit = 'account.invoice'
+    _inherit = 'account.move'
 
-    @api.multi
     def generate_xml_attachment(self):
         self.ensure_one()
         if not self.l10n_mx_edi_cfdi:
             return False
         fname = ("%s-%s-MX-Bill-%s.xml" % (
-            self.journal_id.code, self.reference,
+            self.journal_id.code, self.ref,
             self.company_id.partner_id.vat or '')).replace('/', '')
         data_attach = {
             'name': fname,
             'datas': base64.encodebytes(
-                self.l10n_mx_edi_cfdi and
-                self.l10n_mx_edi_cfdi.lstrip(BOM_UTF8U).encode('UTF-8') or ''),
-            'datas_fname': fname,
-            'description': _('XML signed from Invoice %s.') % self.number,
+                self.l10n_mx_edi_cfdi),
+            #'datas_fname': 'fname',
+            'description': _('XML signed from Invoice %s.') % fname,
             'res_model': self._name,
             'res_id': self.id,
         }
         self.l10n_mx_edi_cfdi_name = fname
         return self.env['ir.attachment'].with_context({}).create(data_attach)
 
-    @api.multi
+
     def create_adjustment_line(self, xml_amount):
         """If the invoice has difference with the total in the CFDI is
         generated a new line with that adjustment if is found the account to
