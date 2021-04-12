@@ -15,7 +15,6 @@ class mx_integritas_automatizacion_soporte(models.Model):
     
     fecha_limite_pruebas = fields.Char(compute="_value_pc", string="CAmpo extra",traslate=True)
     
-    @api.multi
     def _value_pc(self):
         print(self.name)
         if self.date_last_stage_update != False:
