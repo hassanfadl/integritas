@@ -26,8 +26,7 @@ class mx_integritas_automatizacion_soporte(models.Model):
             self.fecha_limite_pruebas = date_time_format
         else:
             self.fecha_limite_pruebas = False
-
-    @api.multi   
+  
     def enviar_email(self):
         
         e = Correo()
