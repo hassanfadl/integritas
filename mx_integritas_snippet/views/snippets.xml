@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="register_s_website_form" inherit_id="website.snippets" name="Snippet Form">
+        <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="mx_integritas_snippet.mx_integritas_form" t-thumbnail="/website/static/src/img/s_website_form.png"/>
+        </xpath>
+    </template>
+    
+    
+</odoo>
