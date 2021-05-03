@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_report_op_integritas" model="ir.ui.view">
+        <field name="name">Modificación de productos opcionales</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="sale_management.report_saleorder_document_inherit_sale_management"/>
+        <field name="arch" type="xml">
+            <xpath expr="//table[@name='table_optional_products']" position="replace">
+			    <t t-set="price_total_optional" t-value="0"/>
+			    <table name="table_optional_products" class="table table-sm">
+			      <thead>
+			          <tr>
+			              <th name="th_option_name" class="text-left" style="width:25rem!important;">Description</th>
+			              <th t-if="has_option_discount" name="th_option_discount" groups="product.group_discount_per_so_line" class="text-left">Disc.%</th>
+			              <th name="th_option_price_unit" class="text-right">Unit Price</th>
+			              <th class="text-right">Cantidad</th>
+			              <th class="text-right">Total</th>
+			          </tr>
+			      </thead>
+			      <tbody class="sale_tbody">
+			          <tr t-foreach="doc.sale_order_option_ids" t-as="option">
+			              <td name="td_option_name">
+			                  <span t-field="option.name"/>
+			              </td>
+			              <td t-if="has_option_discount" name="td_option_discount" groups="product.group_discount_per_so_line">
+			                  <strong t-if="option.discount != 0.0" class="text-info">
+			                      <t t-esc="((option.discount % 1) and '%s' or '%d') % option.discount"/>%
+			                  </strong>
+			              </td>
+			              <td name="td_option_price_unit">
+			                  <strong class="text-right">
+			                      <div t-field="option.price_unit" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" t-att-style="option.discount and 'text-decoration: line-through' or None" t-att-class="option.discount and 'text-danger' or None"/>
+			                      <div t-if="option.discount">
+			                          <t t-esc="'%.2f' % ((1-option.discount / 100.0) * option.price_unit)"/>
+			                      </div>
+			                  </strong>
+			              </td>
+			              <td class="text-right">
+			                <t t-esc="option.quantity"></t>
+			              </td>
+			              <td class="text-right">
+
+			                <t t-set="total_optional" t-value="option.quantity * option.price_unit"/>
+			                <t t-set="total_opcional_sum" t-value="total_optional"/>
+			                <strong>
+			                  <t t-esc="'$ '+'{0:,.2f}'.format(total_optional)"></t>
+			                </strong>
+			                <t t-if="option.discount">
+			                  <t t-set="total_descuentos" t-value="(option.quantity * ((1-option.discount / 100.0) * option.price_unit))"/>
+			                  <t t-esc="'$ '+'{0:,.2f}'.format(total_descuentos)"/>
+			                  <t t-set="total_opcional_sum" t-value="total_descuentos"/>
+			                </t>
+			                <t t-set="price_total_optional" t-value="price_total_optional + total_opcional_sum"/>
+			              </td>
+			          </tr>
+			      </tbody>
+			  </table>
+			  <table style="width:100%">
+			    <tr>
+			      <td class="text-right" >
+			        <div class="text-right" style="border-top:solid 1px #000000">
+			          
+			          <strong> Total: </strong><strong><t t-esc="'$ '+'{0:,.2f}'.format(price_total_optional)"></t></strong>
+			        </div>
+			        
+			      </td>
+			    </tr>
+			  </table>
+			</xpath>
+        </field>
+    </record>
+</odoo>

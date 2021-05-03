@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mx_integritas_modificacion_reportes/_mx_integritas_modificacion_reportes/,mx_integritas_modificacion_reportes/.mx_integritas_modificacion_reportes/,model_mx_integritas_modificacion_reportes/_mx_integritas_modificacion_reportes/,base.group_user,1,1,1,1

@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+
+        <record id="template_timesheet_integritas" model="mail.template">
+            <field name="name">Timesheet Email Integritas</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="email_from">${(object.user_id.email_formatted or user.email_formatted or '') | safe}</field>
+            <field name="email_to" >${object.partner_id.email}</field>
+            <field name="report_template" ref="report_timesheet_integritas_report" />
+            <field name="lang"></field>
+            <field name="subject">Fin de Soporte, Envió de Horas</field>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html"><![CDATA[
+<table>
+  <tbody>
+      <tr><br><br><img src="https://integritas.odoo.com/web/image/20390/Integritas.png" width="5%"/><br></tr>
+      <tr>
+        <div style="text-align: justify;">
+          <h2>Estimado ${object.partner_id.name},</h2>
+          <p>
+            Te enviamos tus horas consumidas de la póliza "${object.name}". Cualquier duda favor de ponerse en contacto al correo <a href="mailto:ventas@integritas.mx">ventas@integritas.mx</a><br>
+          </p>
+        </div>
+      </tr>
+      <tr>
+        <div>
+          <br/><br/>
+          Atte: Equipo de Integritas
+          ¡Si puedes imaginarlo podemos programarlo!
+        </div>
+      </tr>
+    </tbody>
+  </table>
+]]></field>
+        </record>
+
+  <record id="automatic_action_integritas_timesheet" model="base.automation">
+        <field name="name">Timesheet Report Integritas</field>
+        <field name="model_id" ref="project.model_project_task"/>
+
+        <field name="state">code</field>
+        <field name="code">
+if not record.is_email_timesheet_send:
+  template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
+  template_inst.send_mail(record.id)
+  record.write({'is_email_timesheet_send': True})
+        </field>
+        <field name="trigger">on_write</field>
+        <field name="filter_domain">["&amp;","&amp;","&amp;",["name","ilike","Soporte"],["project_id.name","ilike","Soporte"],["progress",">=",100],["is_email_timesheet_send","=",False]]</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    </data>
+</odoo>
+
+<!--Correo remplazado-->
+<!--
+<tr>
+        <div style="display:table;">
+            <div style="display:table-header-group;">
+                <div style="display:table-row;">
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem;background-color: #29a9e0;color:#FFFFFF;">Fecha</div>
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem;background-color: #29a9e0;color:#FFFFFF;">Colaborador</div>
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 50rem;background-color: #29a9e0;color:#FFFFFF;">Descripción</div>
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem;background-color: #29a9e0;color:#FFFFFF;">Horas</div>
+                </div>
+            </div>
+            <div style="display:table-row-group;">
+                % for dato in object.timesheet_ids:
+                <div style="display:table-row;">
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem">${dato.date}</div>
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem">${dato.employee_id.name}</div>
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:left;padding:1rem;width: 50rem">${dato.name}</div>
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem">${dato.unit_amount}</div>
+                </div>
+                % endfor
+                <div style="display:table-row;">
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem"></div>
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem"></div>
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:left;padding:1rem;width: 50rem"><strong>Horas Consumidas</strong></div>
+                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem"><strong>${object.effective_hours}</strong></div>
+                </div>
+            </div>
+        </div>
+      </tr>
+-->
