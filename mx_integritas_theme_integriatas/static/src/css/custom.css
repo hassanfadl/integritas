@@ -1,0 +1,25 @@
+.flotante {
+    display: scroll;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    height: 7rem;
+    z-index: 1 !important;
+}
+.pulse {
+    animation: pulse-animation 1s infinite;
+}
+  
+@keyframes pulse-animation {
+0% {
+    box-shadow: 0 0 0 0px rgba(71, 250, 122, 0.3);
+border-radius:50%
+}
+100% {
+    box-shadow: 0 0 0 20px rgba(71, 250, 122, 0.3);
+border-radius:50%
+}
+}
+div{
+	background-color: #000000!important;
+}

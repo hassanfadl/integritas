@@ -1,0 +1,37 @@
+<odoo>
+  <data>
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Codigo adicional integritas">
+        <xpath expr="script[last()]" position="after">
+          <script type="text/javascript" src="/mx_integritas_theme_integriatas/static/src/js/custom.js"></script>
+          <script type="text/javascript" src="/mx_integritas_theme_integriatas/static/src/js/widget_integritas.js"></script>
+          <link rel="stylesheet" href="/mx_integritas_theme_integriatas/static/src/css/custom.css"/>
+          
+        </xpath>
+    </template>
+    <template id="mx_integritas_copyright" inherit_id="web.frontend_layout" name="Copyright Integritas mx" >
+        <xpath expr="//div[@class='o_footer_copyright']" position="replace">
+          <div class="o_footer_copyright">
+            <div class="container py-3">
+              <div class="row">
+                <div class="col-sm text-center text-sm-left text-muted">
+                    <t t-call="web.debug_icon"/>
+                    <span>Copyright &amp;copy;</span> <span t-field="res_company.name" itemprop="name">Company name</span>
+                    
+                </div>
+                <div class="col-sm text-center text-sm-right">
+                    <span>Creado por | </span> <a href="https://integritas.mx" target="_blank" class="text-white" style="text-decoration:underline">Integritas</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </xpath>
+    </template>
+     <template id="mx_integritas_botton_flotante" inherit_id="website.layout" name="integritasFlotante">
+        <xpath expr="//body[@t-att-class='body_classname']" position="after">
+          <a href="https://api.whatsapp.com/message/ODJWOG3OBNQJD1" class="flotante href-tel" target="_blank">
+            <img src="/mx_integritas_theme_integriatas/static/src/img/whatsapp.png" class="img-fluid pulse" alt="" width="50rem" height="50rem"/>
+          </a>
+        </xpath>
+      </template>
+  </data>
+</odoo>
