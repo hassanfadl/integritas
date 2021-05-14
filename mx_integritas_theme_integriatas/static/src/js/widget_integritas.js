@@ -25,7 +25,7 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
             console.log("Start Castle")
         },
          _botonWhatsApp: function (ev) {
-            $("#whats-integritas").removeClass("invisible")            
+            $("#whats-integritas").removeClass("invisible-ws")            
         },
          _botonWhatsApp_submit: function (ev) {
             var name = $("input[name='wsintegritasname']").val();
