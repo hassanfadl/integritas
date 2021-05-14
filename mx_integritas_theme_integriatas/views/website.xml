@@ -44,7 +44,7 @@
                               </div>
                         </td>
                         <td style="text-align:right;padding:1rem">
-                            <span style="color:#FFFFFF" id="close-ws-integritas">x</span>
+                            <span style="color:#FFFFFF;cursor:pointer;" id="close-ws-integritas">x</span>
                         </td>
                     </tr>
               
@@ -61,8 +61,8 @@
                 </table>
                 <table>
                     <tr>
-                        <td style="width:40px"></td>
-                        <td style="width:270px">
+                        <td style="width:80px"></td>
+                        <td style="width:300px">
                             <div style="border-radius: 5px 5px 5px 5px; width:100%; background:#FFFFFF!important;padding:1rem">
                                 <form>
                                     <div style="margin-top:1px">
