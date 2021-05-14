@@ -27,10 +27,10 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 		if not bp:
 			bp=request.env['res.partner'].sudo().create({'name': name,'email':email,'phone':phone})
 
-		eti=request.env['crm.lead.tag'].sudo().search([('name', '=','Boton whatsapp')])
+		eti=request.env['crm.tag'].sudo().search([('name', '=','Boton whatsapp')])
 		if not eti:
-			eti=request.env['crm.lead.tag'].sudo().create({'name':'Boton whatsapp'})
-		tags=request.env['crm.lead.tag'].sudo().browse(eti.id)
+			eti=request.env['crm.tag'].sudo().create({'name':'Boton whatsapp'})
+		tags=request.env['crm.tag'].sudo().browse(eti.id)
 		oportunidad=request.env['crm.lead'].sudo().create({'name':'Oportunidad WhatsApp Sitio Web '+name,'partner_id':bp.id,'tag_ids':tags,'planned_revenue': float(0) })
 
 		return str(oportunidad)
