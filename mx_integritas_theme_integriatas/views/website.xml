@@ -8,7 +8,7 @@
           
         </xpath>
     </template>
-    <template id="mx_integritas_copyright" inherit_id="web.frontend_layout" name="Copyright Integritas mx" >
+    <template id="mx_integritas_copyright" inherit_id="web.frontend_layout" name="Copyright Integritas mx" priority="16">
         <xpath expr="//div[@class='o_footer_copyright']" position="replace">
           <div class="o_footer_copyright">
             <div class="container py-3">
