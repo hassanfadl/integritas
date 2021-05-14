@@ -31,7 +31,7 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 		if not eti:
 			eti=request.env['crm.tag'].sudo().create({'name':'Boton whatsapp'})
 		tags=request.env['crm.tag'].sudo().browse(eti.id)
-		oportunidad=request.env['crm.lead'].sudo().create({'name':'Oportunidad WhatsApp Sitio Web '+name,'partner_id':bp.id,'tag_ids':tags,'planned_revenue': float(0) })
+		oportunidad=request.env['crm.lead'].sudo().create({'name':'Oportunidad WhatsApp Sitio Web '+name,'partner_id':bp.id,'tag_ids':tags })
 
 		return str(oportunidad)
 
