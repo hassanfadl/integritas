@@ -1,9 +1,7 @@
 <odoo>  
   <data>
-        <template id="mx_integritas_login1" inherit_id="portal.portal_show_sign_in" name="show signin integritas 1">
-            <!--<xpath expr="//li[@class='nav-item divider']" position="replace">
-                <li class="nav-item divider" groups="base.group_public"/>
-            </xpath>-->
+        <!--<template id="mx_integritas_login1" inherit_id="portal.portal_show_sign_in" name="show signin integritas 1">
+            
             <xpath expr="//li[@class='nav-item']" position="replace">
                <li groups="base.group_public" class="nav-item" style="display:none">
                     <a t-attf-href="/web/login" class="nav-link">
@@ -11,7 +9,7 @@
                     </a>
                 </li>
             </xpath>
-        </template>
+        </template>-->
         
   
   </data>
