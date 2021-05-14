@@ -38,10 +38,13 @@
                             </div>
                         </td>
                         <td>
-                      <div style="padding:1rem;color:#FFFFFF" >
-                        <span >Integritas</span> <br/>
-                        <small>Online</small>
-                      </div>
+                              <div style="padding:1rem;color:#FFFFFF" >
+                                <span >Integritas</span> <br/>
+                                <small>Online</small>
+                              </div>
+                        </td>
+                        <td style="text-align:right;padding:1rem">
+                            <span style="color:#FFFFFF" id="close-ws-integritas">x</span>
                         </td>
                     </tr>
               
