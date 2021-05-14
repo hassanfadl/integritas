@@ -50,7 +50,7 @@
                     <tr>
                         <td style="width:270px">
                             <div style="border-radius: 5px 5px 5px 5px; width:100%; background:#FFFFFF!important;padding:1rem">
-                                <span style="font-size:.9rem">Hola, ¿Te gustaría solicitar información o una cotización? Ingresa tu email y número telefónico para ponernos en contacto contigo.</span>
+                                <span style="font-size:.9rem;color:#000000!important;">Hola, ¿Te gustaría solicitar información o una cotización? Ingresa tu email y número telefónico para ponernos en contacto contigo.</span>
                             </div>
                         </td>
                     </tr>
