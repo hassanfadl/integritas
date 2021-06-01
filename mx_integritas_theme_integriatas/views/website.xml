@@ -8,7 +8,6 @@
           
         </xpath>
     </template>
-    
      <template id="mx_integritas_botton_flotante" inherit_id="website.layout" name="integritasFlotante">
         <xpath expr="//body[@t-att-class='body_classname']" position="after">
           <a href="https://api.whatsapp.com/message/ODJWOG3OBNQJD1" class="flotante href-tel" target="_blank">
