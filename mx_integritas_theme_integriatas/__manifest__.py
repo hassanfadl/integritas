@@ -6,7 +6,7 @@
         Tema integritas""",
 
     'description': """
-        Long description of module's purposes
+        Long description of module's purpose
     """,
 
     'author': "Integritas",
