@@ -8,6 +8,24 @@
           
         </xpath>
     </template>
+    <template id="mx_integritas_copyright" inherit_id="web.frontend_layout" name="Copyright Integritas mx" >
+        <xpath expr="//div[@class='o_footer_copyright']" position="replace">
+          <div class="o_footer_copyright">
+            <div class="container py-3">
+              <div class="row">
+                <div class="col-sm text-center text-sm-left text-muted">
+                    <t t-call="web.debug_icon"/>
+                    <span>Copyright &amp;copy;</span> <span t-field="res_company.name" itemprop="name">Company name</span>
+                    
+                </div>
+                <div class="col-sm text-center text-sm-right">
+                    <span>Creado por | </span> <a href="https://integritas.mx" target="_blank" class="text-white" style="text-decoration:underline">Integritas</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </xpath>
+    </template>
      <template id="mx_integritas_botton_flotante" inherit_id="website.layout" name="integritasFlotante">
         <xpath expr="//body[@t-att-class='body_classname']" position="after">
           <a href="https://api.whatsapp.com/message/ODJWOG3OBNQJD1" class="flotante href-tel" target="_blank">
