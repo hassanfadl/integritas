@@ -26,9 +26,9 @@
           </div>
         </xpath>
     </template>-->
-     <template id="mx_integritas_botton_flotante" inherit_id="website.footer_custom" name="integritasFlotante">
+     <template id="mx_integritas_botton_flotante" inherit_id="web.frontend_layout" name="integritasFlotante">
         <!--expr="//body[@t-att-class='body_classname']"-->
-        <xpath expr="//div[@id='footer']" position="inside">
+        <xpath expr="//div[@id='wrapwrap']" position="inside">
           <div id="whats-integritas"  style="width:18rem;height: 25rem;background-color: #F5EBDF;border-radius: 5px 5px 5px 5px;" class="flotante-cuadro invisible-ws font-ws">
             <table style="background:#075F56;width: 100%;height: 4rem;border-radius: 5px 5px 0px 0px">
               <tr style="margin-left: 1rem;margin-top:5px">
