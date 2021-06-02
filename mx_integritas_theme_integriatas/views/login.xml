@@ -1,13 +1,7 @@
 <odoo>  
   <data>
         <template id="mx_integritas_login1" inherit_id="portal.user_sign_in" name="show signin integritas 1">
-            
             <xpath expr="//li" position="replace">
-               <!--<li groups="base.group_public" class="nav-item" style="display:none">
-                    <a t-attf-href="/web/login" class="nav-link">
-                        <b>Sign in</b>
-                    </a>
-                </li>-->
                 <span></span>
             </xpath>
         </template>

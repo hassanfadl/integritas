@@ -5,9 +5,8 @@
 .flotante {
     display: scroll;
     position: fixed;
-    bottom: 0px;
+    bottom: 70px;
     right: 20px;
-    height: 7rem;
     z-index: 1 !important;
 }
 .flotante-cuadro {

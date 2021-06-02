@@ -8,39 +8,22 @@
           
         </xpath>
     </template>
-    <!--<template id="mx_integritas_copyright" inherit_id="web.frontend_layout" name="Copyright Integritas mx" priority="16">
-        <xpath expr="//div[@class='o_footer_copyright']" position="replace">
-          <div class="o_footer_copyright">
-            <div class="container py-3">
-              <div class="row">
-                <div class="col-sm text-center text-sm-left text-muted">
-                    <t t-call="web.debug_icon"/>
-                    <span>Copyright &amp;copy;</span> <span t-field="res_company.name" itemprop="name">Company name</span>
-                    
-                </div>
-                <div class="col-sm text-center text-sm-right">
-                    <span>Creado por | </span> <a href="https://integritas.mx" target="_blank" class="text-white" style="text-decoration:underline">Integritas</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </xpath>
-    </template>-->
+  
      <template id="mx_integritas_botton_flotante" inherit_id="web.frontend_layout" name="integritasFlotante">
         <!--expr="//body[@t-att-class='body_classname']"-->
         <xpath expr="//div[@id='wrapwrap']" position="inside">
-          <div id="whats-integritas"  style="width:18rem;height: 25rem;background-color: #F5EBDF;border-radius: 5px 5px 5px 5px;" class="flotante-cuadro invisible-ws font-ws">
+          <div id="whats-integritas"  style="width:18rem;height: 25rem;background-color: #F5EBDF;border-radius: 5px 5px 5px 5px;z-index:1400!important" class="flotante-cuadro invisible-ws font-ws">
             <table style="background:#075F56;width: 100%;height: 4rem;border-radius: 5px 5px 0px 0px">
               <tr style="margin-left: 1rem;margin-top:5px">
                         <td style="width: 50px;text-align: center">
-                            <div style="background-color: #FFFFFF;border-radius: 50%;width:55px;height: 55px;text-align: center">
+                            <div style="background-color: #FFFFFF;border-radius: 50%;width:55px;height: 55px;text-align: center;margin-left:.5rem">
                                 <img src="https://integritas.mx/wp-content/uploads/2018/01/LogoA02.png"  width="30px" style="margin-top:8px;"/>
                             </div>
                         </td>
                         <td>
                               <div style="padding:1rem;color:#FFFFFF" >
                                 <span >Integritas</span> <br/>
-                                <small>Online</small>
+                                <small style="font-size:.7rem">Online</small>
                               </div>
                         </td>
                         <td style="text-align:right;padding:1rem">
