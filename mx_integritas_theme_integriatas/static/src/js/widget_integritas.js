@@ -16,13 +16,16 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
         events: {
             'click #footer #btn-whatsapp-integritas': '_botonWhatsApp',
             'click #footer #btn-integritas-ws-submit': '_botonWhatsApp_submit',
+            'click #footer #close-ws-integritas': '_botonWhatsApp_close',
+
+
         },
         init: function () {
             this._super.apply(this, arguments);
             this._popoverRPC = null;
         },
         start: function() {
-            console.log("Start Castle")
+            console.log("Start Integritas")
         },
          _botonWhatsApp: function (ev) {
             $("#whats-integritas").removeClass("invisible-ws")            
@@ -39,14 +42,17 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
                     email: email,
                     phone: phone,
                 },
-                })).then(this._handleMarca.bind(this));
+                })).then(this._handleRedirectUrl.bind(this));
 
 
             }            
         },
+        _botonWhatsApp_close: function (ev) {
+            $("#whats-integritas").addClass("invisible-ws")         
+        },
         
 
-        _handleMarca: function (result) {
+        _handleRedirectUrl: function (result) {
             window.location.href="https://api.whatsapp.com/message/ODJWOG3OBNQJD1"            
         },
 
