@@ -14,9 +14,9 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
         
         selector: '#wrapwrap',
         events: {
-            'click #footer #btn-whatsapp-integritas': '_botonWhatsApp',
-            'click #footer #btn-integritas-ws-submit': '_botonWhatsApp_submit',
-            'click #footer #close-ws-integritas': '_botonWhatsApp_close',
+            'click #btn-whatsapp-integritas': '_botonWhatsApp',
+            'click #btn-integritas-ws-submit': '_botonWhatsApp_submit',
+            'click #close-ws-integritas': '_botonWhatsApp_close',
 
 
         },
