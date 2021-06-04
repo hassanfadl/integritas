@@ -27,7 +27,7 @@
                               </div>
                         </td>
                         <td style="text-align:right;padding:1rem">
-                            <span style="color:#FFFFFF;cursor:pointer;" id="close-ws-integritas"><i class="fa fa-times" style="color:#000000"></i></span>
+                            <span style="color:#FFFFFF;cursor:pointer;" id="close-ws-integritas"><i class="fa fa-times" style="color:#FFFFFF"></i></span>
                         </td>
                     </tr>
               
