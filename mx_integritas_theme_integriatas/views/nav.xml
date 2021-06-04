@@ -1,0 +1,16 @@
+<odoo>
+	<data>
+		<template id="mx_integritas_modify_nav_1" inherit_id="website.submenu" name="Integritas Menu">
+	        <xpath expr="//a[@data-toggle='dropdown']/span" position="replace">
+			    <span ><i class="fa fa-spin fa-connectdevelop" style="color:#ffffff"></i></span>
+			    <span t-field="submenu.name"/>
+			</xpath>
+    	</template>
+    	<template id="mx_integritas_modify_nav_2" inherit_id="website.submenu" name="Integritas Sub Menu">
+	        <xpath expr="//a[@t-att-href='submenu.clean_url()']/span" position="replace">
+			    <span><i class="fa fa-spin fa-connectdevelop" style="color:#123558"></i></span> <span t-field="submenu.name"/>
+			</xpath>
+
+    	</template>
+	</data>
+</odoo>
