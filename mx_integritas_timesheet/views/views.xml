@@ -6,7 +6,7 @@
                 <div class="page">
                     <h1>Reporte de Horas</h1>
                     <strong>Estimad@</strong><strong t-field="o.partner_id.name"></strong>
-                    <p>Estimad@ Te informamos que las horas de tu póliza <strong t-field="o.name"></strong> han sido consumidas por completo (100%). En caso de cualquier duda y/o comentario, favor de contactarnos al correo ventas@integritas.mx </p>
+                    <p>Te informamos que las horas de tu póliza <strong t-field="o.name"></strong> han sido consumidas por completo (100%). En caso de cualquier duda y/o comentario, favor de contactarnos al correo ventas@integritas.mx </p>
                 </div>
                 <div>
                     <t t-set="count" t-value="0"/>
@@ -42,7 +42,7 @@
                               <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.date"></t></td>
                               <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.employee_id.name"></t></td>
                               <td style="text-align:left!important;border: 3px solid #C2C4C3;"><t t-esc="line.name"></t></td>
-                              <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.unit_amount"></t></td>
+                              <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="round(line.unit_amount,1)"></t></td>
                             </tr>
                           </t>
                         </t>
@@ -63,12 +63,12 @@
                           <td style="text-align:left!important;border: 3px solid #C2C4C3;"></td>
                           <td style="text-align:left!important;border: 3px solid #C2C4C3;"></td>
                           <td style="text-align:center!important;border: 3px solid #C2C4C3;">Total de Horas restantes</td>
-                          <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="o.remaining_hours"></t></td>
+                          <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="round(o.remaining_hours,1)"></t></td>
                         </tr>
                       </tbody>
                     </table>
                 </div>
-                <div>
+                <div><br/><br/><br/>
                   Atte: Equipo de Integritas <br/>
                   ¡Si puedes imaginarlo podemos programarlo!
                 </div>
