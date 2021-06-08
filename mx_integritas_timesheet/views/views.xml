@@ -29,7 +29,7 @@
                             <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.date"></t></td>
                             <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.employee_id.name"></t></td>
                             <td style="text-align:left!important;border: 3px solid #C2C4C3;"><t t-esc="line.name"></t></td>
-                            <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.unit_amount"></t></td>
+                            <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="round(line.unit_amount,1)"></t></td>
                           </tr>
                         </t>
                       </tbody>
