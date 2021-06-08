@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".o_brand_promotion").html("Creado por | Integritas")
+	//$(".o_brand_promotion").html("Creado por | Integritas")
 })
 $(window).scroll(function(p, a){
 	var scrollLeft = $(window).scrollLeft();
