@@ -60,11 +60,14 @@
 		width:70%!important;
 	}
 }
-.navbar-light {
-    /* background-color: #123558; */
+/*.navbar-light {
+
     background-image: url("/mx_integritas_theme_integriatas/static/src/img/nav.png")!important;
     background-size: cover;
     color: #FFFFFF;
+}*/
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    border: 1px solid #FFFFFF!important;
 }
 .dropdown-toggle span{
     color:#FFFFFF!important;
