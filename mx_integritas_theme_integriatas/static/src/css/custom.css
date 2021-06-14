@@ -88,3 +88,6 @@
 .o_footer_copyright.o_colored_level.o_cc{
     background-color: #123558!important;
 }
+#bottom > div.o_footer_copyright.o_colored_level.o_cc > div > div > div > span:nth-child(3){
+    color:#FFFFFF!important;
+}
