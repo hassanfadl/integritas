@@ -85,3 +85,6 @@
     text-decoration: none;
     background-color: rgba(0,0,0,.2);
 }
+.o_footer_copyright.o_colored_level.o_cc{
+    background-color: #123558!important;
+}
