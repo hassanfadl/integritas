@@ -80,6 +80,8 @@
 }
 
 
-.dropdown-item.active{
-    color:#FFFFFF!important;
+.dropdown-item.active, .dropdown-item:active {
+    /* color: #FFFFFF!important; */
+    text-decoration: none;
+    background-color: rgba(0,0,0,.2);
 }
