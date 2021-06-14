@@ -80,6 +80,6 @@
 }
 
 
-#top_menu/li/ul/li/a/span#top_menu > li.nav-item.dropdown.active > ul > li:nth-child(1) > a > span.o_editable.o_is_inline_editable.note-air-editor.note-editable{
-    color:#FFFFFF;
+.dropdown-item.active{
+    color:#FFFFFF!important;
 }
