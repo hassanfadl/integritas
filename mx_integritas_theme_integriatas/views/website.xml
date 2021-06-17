@@ -12,7 +12,7 @@
      <template id="mx_integritas_botton_flotante" inherit_id="web.frontend_layout" name="integritasFlotante">
         <!--expr="//body[@t-att-class='body_classname']"-->
         <xpath expr="//div[@id='wrapwrap']" position="inside">
-          <div id="whats-integritas"  style="width:18rem;height: 25rem;background-color: #F5EBDF;border-radius: 5px 5px 5px 5px;z-index:1400!important" class="flotante-cuadro invisible-ws font-ws">
+          <div id="whats-integritas"  style="width:18rem;height: 27rem;background-color: #F5EBDF;border-radius: 5px 5px 5px 5px;z-index:1400!important" class="flotante-cuadro invisible-ws font-ws">
             <table style="background:#075F56;width: 100%;height: 4rem;border-radius: 5px 5px 0px 0px">
               <tr style="margin-left: 1rem;margin-top:5px">
                         <td style="width: 50px;text-align: center">
@@ -57,7 +57,9 @@
                                     <div style="margin-top:1px">
                                         <input type="number" placeholder="Telefono" class="form-control form-control-sm" name="wsintegritasphone" required="true"/>
                                     </div>
-                                    
+                                    <div style="line-height:1!important;font-size:.7rem!important">
+                                        <small id="error_whatsapp" class="text-danger invisible">Campos incorrectos verifica que tu información sea válida.</small>
+                                    </div>
                                     <div style="text-align:right;margin-top:2px">
                                         <span  id="btn-integritas-ws-submit"  class="btn btn-sm" style="background-color:#075F56;color:#ffffff; ">Iniciar</span>
                                     </div>

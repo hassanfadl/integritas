@@ -114,14 +114,30 @@
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(3) > a > img{
         margin-top: -2em;
     }
+    #footer{
+        background:#123558!important;
+    }
+    #wrap > div > section.s_references.bg-white.pb0.pt0.o_colored_level > div > div > div:nth-child(4) > a > img{
+        width: 35%!important;
+        margin-top: 3rem!important;
+    }
+    #paso1 > div > div > div.text-center.pt24.pb48.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg{
+        background:#123558!important;
+    }
+    #paso1 > div > div > div.text-center.pt24.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg{
+       background:#123558!important; 
+    }
+    #paso1 > div > div > div.text-center.pt16.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg{
+        background:#123558!important;
+    }
 }
 @media screen and (max-width: 770px) and (min-width: 401px) {
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg{
         background-image: url(/mx_integritas_theme_integriatas/static/src/img/phone.jpg)!important;
         background-position: center!important;
-        margin-top: -14em;
+        margin-top: -10em;
         background-size: contain;
-        margin-bottom: -14em!important;
+        margin-bottom: -10em!important;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div > a > img{
         width:20%!important;
@@ -137,6 +153,22 @@
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(3) > a > img{
         margin-top: -2em;
     }
+    #footer{
+        background:#123558!important;
+    }
+    #wrap > div > section.s_references.bg-white.pb0.pt0.o_colored_level > div > div > div:nth-child(4) > a > img{
+        width: 35%!important;
+        margin-top: 3rem!important;
+    }
+    #paso1 > div > div > div.text-center.pt24.pb48.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg{
+        background:#123558!important;
+    }
+    #paso1 > div > div > div.text-center.pt24.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg{
+        background:#123558!important; 
+    }
+    #paso1 > div > div > div.text-center.pt16.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg{
+        background:#123558!important;
+    }
 }
 @media screen and (max-width: 960px) and (min-width: 771px) {
     
@@ -151,4 +183,11 @@
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div{
         margin-left: -8rem!important;
     }
+    #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg{
+        background-position: 10% 50%!important;
+    }
+}
+
+.invisible{
+    display:none!important;
 }

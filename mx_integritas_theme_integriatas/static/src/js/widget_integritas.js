@@ -45,7 +45,9 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
                 })).then(this._handleRedirectUrl.bind(this));
 
 
-            }            
+            }else{
+                $("#error_whatsapp").removeClass('invisible')
+            }           
         },
         _botonWhatsApp_close: function (ev) {
             $("#whats-integritas").addClass("invisible-ws")         
