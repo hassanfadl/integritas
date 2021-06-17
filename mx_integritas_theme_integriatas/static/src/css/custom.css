@@ -135,9 +135,9 @@
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg{
         background-image: url(/mx_integritas_theme_integriatas/static/src/img/phone.jpg)!important;
         background-position: center!important;
-        margin-top: -10em;
+        margin-top: -12em;
         background-size: contain;
-        margin-bottom: -10em!important;
+        margin-bottom: -12em!important;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div > a > img{
         width:20%!important;
