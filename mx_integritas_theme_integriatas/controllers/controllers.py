@@ -28,6 +28,6 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 		if not source_id:
 			source_id=request.env['utm.source'].sudo().create({'name':'Boton Whatsapp'})
 			#source_id = request.env['utm.source'].sudo().browse(source_id.id)
-		oportunidad = request.env['crm.lead'].sudo().create({'name':'Oportunidad WhatsApp Sitio Web '+name,'partner_id':bp.id,'source_id':[(4,source_id.id)] })
+		oportunidad = request.env['crm.lead'].sudo().create({'name':'Oportunidad WhatsApp Sitio Web '+name,'partner_id':bp.id,'source_id':source_id.id })
 
 		return str(oportunidad)
