@@ -187,3 +187,7 @@
         background-position: 10% 50%!important;
     }
 }
+
+.invisible{
+    display:none!important;
+}
