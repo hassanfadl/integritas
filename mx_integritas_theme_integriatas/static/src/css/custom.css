@@ -130,6 +130,18 @@
     #paso1 > div > div > div.text-center.pt16.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg{
         background:#123558!important;
     }
+    #paso1 > div > div > div.text-center.pt24.pb48.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg > a{
+        background: #FFFFFF!important;
+        color: #123558;
+    }
+    #paso1 > div > div > div.text-center.pt24.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg > div > a{
+        background: #FFFFFF!important;
+        color: #123558;
+    }
+    #paso1 > div > div > div.text-center.pt16.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg > a{
+        background: #FFFFFF!important;
+        color: #123558; 
+    }
 }
 @media screen and (max-width: 770px) and (min-width: 401px) {
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg{
@@ -168,6 +180,18 @@
     }
     #paso1 > div > div > div.text-center.pt16.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg{
         background:#123558!important;
+    }
+    #paso1 > div > div > div.text-center.pt24.pb48.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg > a{
+        background: #FFFFFF!important;
+        color: #123558;
+    }
+    #paso1 > div > div > div.text-center.pt24.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg > div > a{
+        background: #FFFFFF!important;
+        color: #123558;
+    }
+    #paso1 > div > div > div.text-center.pt16.pb0.bg-delta.oe_custom_bg.col-lg-4.o_colored_level.oe_img_bg > a{
+        background: #FFFFFF!important;
+        color: #123558; 
     }
 }
 @media screen and (max-width: 960px) and (min-width: 771px) {
