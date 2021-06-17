@@ -96,15 +96,15 @@
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg{
         background-image: url(/mx_integritas_theme_integriatas/static/src/img/phone.jpg)!important;
         background-position: center!important;
-        margin-top: -14em;
+        margin-top: -14rem;
         background-size: contain;
-        margin-bottom: -14em!important;
+        margin-bottom: -14rem!important;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div > a > img{
         width:20%!important;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(1){
-        margin-top: 9em;
+        margin-top: 9rem;
         margin-bottom: -4rem;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(1) > a > img{
@@ -112,7 +112,7 @@
         margin-top: -6rem;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(3) > a > img{
-        margin-top: -2em;
+        margin-top: -2rem;
     }
     #footer{
         background:#123558!important;
@@ -135,15 +135,15 @@
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg{
         background-image: url(/mx_integritas_theme_integriatas/static/src/img/phone.jpg)!important;
         background-position: center!important;
-        margin-top: -10em;
+        margin-top: -12rem;
         background-size: contain;
-        margin-bottom: -10em!important;
+        margin-bottom: -12rem!important;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div > a > img{
         width:20%!important;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(1){
-        margin-top: 9em;
+        margin-top: 9rem;
         margin-bottom: -4rem;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(1) > a > img{
@@ -151,7 +151,7 @@
         margin-top: -6rem;
     }
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(3) > a > img{
-        margin-top: -2em;
+        margin-top: -2rem;
     }
     #footer{
         background:#123558!important;
