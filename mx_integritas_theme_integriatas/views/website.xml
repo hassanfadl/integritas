@@ -75,8 +75,8 @@
             <a  id="btn-whatsapp-integritas" class="flotante href-tel" target="_blank" style="cursor:pointer;">
               <img src="https://integritas.odoo.com/mx_integritas_theme_integriatas/static/src/img/whatsapp.png" class="img-fluid pulse" alt="" width="50rem" height="50rem"/>
             </a>
-            <a  id="btn-up-page" class="flotante-up" target="_blank" style="cursor:pointer;">
-              <i class="fas fa-chevron-up"></i>
+            <a  id="btn-up-page" class="flotante-up" style="" target="_blank" style="cursor:pointer;background:#000000;color:#FFFFFF;border-radius:50%;width:30px;height:30px;text-align:center;">
+              <i class="fa fa-chevron-up"></i>
             </a>
         </xpath>
       </template>
