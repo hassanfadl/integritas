@@ -180,16 +180,17 @@
     }
    #wrap > div > section.s_features > div > div > div:nth-child(1) > a > img{
         width: 80px!important;
+        margin-top: 5rem;
+        margin-bottom: -5rem;
     }
     #wrap > div > section.s_features > div > div > div:nth-child(2) > a > img{
         width: 80px!important;
-        margin-top: 9rem;
-        margin-bottom: -4rem;
+        margin-top: 5rem;
+        margin-bottom: -5rem;
     }
     #wrap > div > section.s_features > div > div > div:nth-child(3) > a > img{
         width: 80px!important;
-        margin-bottom: -3rem;
-        margin-top: -6rem;
+        
     }
     #wrap > div > section.s_features > div {
         width: 30%!important;
