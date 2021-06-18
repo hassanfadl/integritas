@@ -115,7 +115,7 @@
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(2) > a > img{
         width: 55px!important;
-        margin-top: -2rem!important;
+        margin-top: -1rem!important;
         /*margin-top: 5rem!important;
         margin-bottom: -5rem!important;*/
     }
@@ -187,7 +187,7 @@
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(2) > a > img{
         width: 75px!important;
-        margin-top: -2rem!important;
+        margin-top: -1rem!important;
         /*margin-top: 5rem!important;
         margin-bottom: -5rem!important;*/
     }
