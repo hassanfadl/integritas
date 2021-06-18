@@ -120,6 +120,18 @@
         margin-bottom: -3rem;
         margin-top: -6rem;
     }
+    #wrap > div > section.s_features > div {
+        width: 30%!important;
+
+    }
+    #wrap > div > section.s_features > div {
+        margin-top:10rem!important;
+
+    }
+
+
+
+
     #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(3) > a > img{
         margin-top: -2rem;
     }
