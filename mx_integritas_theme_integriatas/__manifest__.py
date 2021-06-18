@@ -19,6 +19,7 @@
         'views/templates.xml',
         'views/website.xml',
         'views/login.xml',
+        'views/nav.xml',
     ],
     'demo': [
         'demo/demo.xml',
