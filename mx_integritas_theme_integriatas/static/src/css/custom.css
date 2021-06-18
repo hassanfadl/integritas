@@ -274,20 +274,16 @@
     
 }
 @media screen and (max-width: 100000px) and (min-width: 1701px) {
-    #wrap > div > section.s_features[style*='banner_principal'] > div > div{
-        margin-left: -8rem!important;
-    }
+    
     #wrap > div > section.s_features[style*='banner_principal']{
         background-position: 10% 50%!important;
     }
     #wrap > div > section.s_features[style*='banner_principal']{
         height: 50rem!important;
     }
+    
     #wrap > div > section.s_features[style*='banner_principal'] div{
-         margin-left: 40rem!important;
-    }
-    #wrap > div > section.s_features[style*='banner_principal'] div{
-        margin-top:10rem;
+        margin-top:4rem;
     }
 }
 
