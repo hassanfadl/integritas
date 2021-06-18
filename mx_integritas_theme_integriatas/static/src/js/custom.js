@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".o_brand_promotion").html("Creado por | Integritas")
+	$(".o_brand_promotion").html("<span class='text-white'>Creado por | Integritas</span>")
 })
 $(window).scroll(function(p, a){
 	var scrollLeft = $(window).scrollLeft();
