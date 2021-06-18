@@ -34,7 +34,7 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
             $("#whats-integritas").removeClass("invisible-ws")            
         },
         _boton_up_page:function(ev){
-            alert()
+            $("html, body").animate({ scrollTop: 0 }, "slow");
         },_botonWhatsApp_submit: function (ev) {
             var name = $("input[name='wsintegritasname']").val();
             var email = $("input[name='wsintegritasemail']").val();
