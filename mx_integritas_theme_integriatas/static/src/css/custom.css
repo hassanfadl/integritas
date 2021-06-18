@@ -9,11 +9,11 @@
     right: 20px;
     z-index: 1 !important;
 }
-.flotante-top {
+.flotante-up {
     display: scroll;
     position: fixed;
     bottom: 50px;
-    right: 20px;
+    right: 50%;
     z-index: 1 !important;
 }
 .flotante-cuadro {
@@ -108,28 +108,28 @@
         margin-bottom: -14rem!important;
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(1) > a > img{
-        width: 60px!important;
+        width: 55px!important;
+        margin-top: 2rem!important;
         /*margin-top: 5rem!important;
         margin-bottom: -5rem!important;*/
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(2) > a > img{
-        width: 60px!important;
+        width: 55px!important;
+        margin-top: -1rem!important;
         /*margin-top: 5rem!important;
         margin-bottom: -5rem!important;*/
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(3) > a > img{
-        width: 60px!important;
+        width: 55px!important;
         
     }
-    #wrap > div > section.s_features[style*='banner_principal'] > div {
-        /*width: 30%!important;*/
-        /*margin-top: 5rem!important;*/
-
-    }
+    
     #wrap > div > section.s_features[style*='banner_principal'] > div {
         margin-top:10rem!important;
-
     }
+    /*#wrap > div > section.s_features[style*='banner_principal'] > div div {
+        margin-top: 1rem!important;
+    }*/
 
 
 
@@ -179,27 +179,30 @@
         margin-bottom: -13rem!important;
     }
    #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(1) > a > img{
-        width: 80px!important;
+        width: 75px!important;
+        margin-top: 2rem!important;
+        
         /*margin-top: 5rem!important;
         margin-bottom: -5rem!important;*/
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(2) > a > img{
-        width: 80px!important;
+        width: 75px!important;
+        margin-top: -1rem!important;
         /*margin-top: 5rem!important;
         margin-bottom: -5rem!important;*/
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(3) > a > img{
-        width: 80px!important;
+        width: 75px!important;
         
     }
-    #wrap > div > section.s_features[style*='banner_principal'] > div {
-        /*width: 30%!important;*/
-
-    }
+    
     #wrap > div > section.s_features[style*='banner_principal'] > div {
         margin-top:10rem!important;
 
     }
+    /*#wrap > div > section.s_features[style*='banner_principal'] > div div {
+        margin-top: 1rem!important;
+    }*/
 
 
 

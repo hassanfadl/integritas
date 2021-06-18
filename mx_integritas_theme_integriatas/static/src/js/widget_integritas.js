@@ -17,6 +17,9 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
             'click #btn-whatsapp-integritas': '_botonWhatsApp',
             'click #btn-integritas-ws-submit': '_botonWhatsApp_submit',
             'click #close-ws-integritas': '_botonWhatsApp_close',
+            'click #btn-up-page': '_boton_up_page',
+
+
 
 
         },
@@ -30,7 +33,9 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
          _botonWhatsApp: function (ev) {
             $("#whats-integritas").removeClass("invisible-ws")            
         },
-         _botonWhatsApp_submit: function (ev) {
+        _boton_up_page:function(ev){
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        },_botonWhatsApp_submit: function (ev) {
             var name = $("input[name='wsintegritasname']").val();
             var email = $("input[name='wsintegritasemail']").val();
             var phone = $("input[name='wsintegritasphone']").val();
