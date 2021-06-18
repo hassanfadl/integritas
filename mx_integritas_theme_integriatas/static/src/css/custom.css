@@ -151,7 +151,7 @@
     }
 }
 @media screen and (max-width: 770px) and (min-width: 401px) {
-    #wrap > .s_features[style^="background-image:"][style$="banner_principal.png)"]{
+    #wrap > .s_features[style*="banner_principal)"]{
         background-image: url(/mx_integritas_theme_integriatas/static/src/img/phone.jpg)!important;
         background-position: center!important;
         margin-top: -13rem;
