@@ -107,26 +107,26 @@
         background-size: contain;
         margin-bottom: -14rem!important;
     }
-    #wrap > div > section.s_features > div > div > div:nth-child(1) > a > img{
+    #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(1) > a > img{
         width: 60px!important;
         margin-top: 5rem!important;
         margin-bottom: -5rem!important;
     }
-    #wrap > div > section.s_features > div > div > div:nth-child(2) > a > img{
+    #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(2) > a > img{
         width: 60px!important;
         margin-top: 5rem!important;
         margin-bottom: -5rem!important;
     }
-    #wrap > div > section.s_features > div > div > div:nth-child(3) > a > img{
+    #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(3) > a > img{
         width: 60px!important;
         
     }
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         width: 30%!important;
         margin-top: 5rem!important;
 
     }
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         margin-top:10rem!important;
 
     }
@@ -134,7 +134,7 @@
 
 
 
-    #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(3) > a > img{
+    #wrap > div > section.s_features[style*='banner_principal'].o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(3) > a > img{
         margin-top: -2rem;
     }
     #footer{
@@ -178,32 +178,32 @@
         background-size: contain;
         margin-bottom: -13rem!important;
     }
-   #wrap > div > section.s_features > div > div > div:nth-child(1) > a > img{
+   #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(1) > a > img{
         width: 80px!important;
         margin-top: 5rem!important;
         margin-bottom: -5rem!important;
     }
-    #wrap > div > section.s_features > div > div > div:nth-child(2) > a > img{
+    #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(2) > a > img{
         width: 80px!important;
         margin-top: 5rem!important;
         margin-bottom: -5rem!important;
     }
-    #wrap > div > section.s_features > div > div > div:nth-child(3) > a > img{
+    #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(3) > a > img{
         width: 80px!important;
         
     }
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         width: 30%!important;
 
     }
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         margin-top:10rem!important;
 
     }
 
 
 
-    #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(3) > a > img{
+    #wrap > div > section.s_features[style*='banner_principal'].o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div > div:nth-child(3) > a > img{
         margin-top: -2rem;
     }
     #footer{
@@ -238,43 +238,43 @@
     }
 }
 @media screen and (max-width: 960px) and (min-width: 771px) {
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         width: 30%!important;
 
     }
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         margin-top:10rem!important;
 
     }
     
 }
 @media screen and (max-width: 1100px) and (min-width: 961px) {
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         width: 30%!important;
 
     }
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         margin-top:10rem!important;
 
     }
     
 }
 @media screen and (max-width: 1700px) and (min-width: 1101px) {
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         width: 30%!important;
 
     }
-    #wrap > div > section.s_features > div {
+    #wrap > div > section.s_features[style*='banner_principal'] > div {
         margin-top:10rem!important;
 
     }
     
 }
 @media screen and (max-width: 100000px) and (min-width: 1701px) {
-    #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg > div > div{
+    #wrap > div > section.s_features[style*='banner_principal'] > div > div{
         margin-left: -8rem!important;
     }
-    #wrap > div > section.s_features.o_colored_level.s_parallax_no_overflow_hidden.pb256.pt152.oe_img_bg{
+    #wrap > div > section.s_features[style*='banner_principal']{
         background-position: 10% 50%!important;
     }
 }
