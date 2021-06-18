@@ -280,6 +280,15 @@
     #wrap > div > section.s_features[style*='banner_principal']{
         background-position: 10% 50%!important;
     }
+    #wrap > div > section.s_features[style*='banner_principal']{
+        height: 50rem!important;
+    }
+    #wrap > div > section.s_features[style*='banner_principal'] div{
+         margin-left: 40rem!important;
+    }
+    #wrap > div > section.s_features[style*='banner_principal'] div{
+        margin-top:10rem;
+    }
 }
 
 .invisible{
