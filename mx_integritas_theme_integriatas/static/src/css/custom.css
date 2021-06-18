@@ -109,21 +109,23 @@
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(1) > a > img{
         width: 60px!important;
-        margin-top: 5rem!important;
-        margin-bottom: -5rem!important;
+        margin-top: 2rem!important;
+        /*margin-top: 5rem!important;
+        margin-bottom: -5rem!important;*/
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(2) > a > img{
         width: 60px!important;
-        margin-top: 5rem!important;
-        margin-bottom: -5rem!important;
+        margin-top: -4rem!important;
+        /*margin-top: 5rem!important;
+        margin-bottom: -5rem!important;*/
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(3) > a > img{
         width: 60px!important;
         
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div {
-        width: 30%!important;
-        margin-top: 5rem!important;
+        /*width: 30%!important;*/
+        /*margin-top: 5rem!important;*/
 
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div {
@@ -180,20 +182,22 @@
     }
    #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(1) > a > img{
         width: 80px!important;
-        margin-top: 5rem!important;
-        margin-bottom: -5rem!important;
+        margin-top: 2rem!important;
+        /*margin-top: 5rem!important;
+        margin-bottom: -5rem!important;*/
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(2) > a > img{
         width: 80px!important;
-        margin-top: 5rem!important;
-        margin-bottom: -5rem!important;
+        margin-top: -4rem!important;
+        /*margin-top: 5rem!important;
+        margin-bottom: -5rem!important;*/
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(3) > a > img{
         width: 80px!important;
         
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div {
-        width: 30%!important;
+        /*width: 30%!important;*/
 
     }
     #wrap > div > section.s_features[style*='banner_principal'] > div {
