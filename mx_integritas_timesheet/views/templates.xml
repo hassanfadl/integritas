@@ -106,7 +106,7 @@ if not record.is_email_timesheet_send:
 limit = 7
 count = 0
 project_id = env['project.project'].search([('name','ilike','Soporte')])[0].id
-model_task = env['project.task'].search([("parent_id","=", False),('progress','=',100),('is_email_timesheet_send','=',False),('name','ilike','Soporte'), ('project_id.id','=',project_id)])
+model_task = env['project.task'].search([("parent_id","=", False),('stage_id.name','!=',"Hecho"),('is_email_timesheet_send','=',False),('name','ilike','Soporte'), ('project_id.id','=',project_id)])
 
 for task in model_task:
   try:
