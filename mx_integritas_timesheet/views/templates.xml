@@ -57,8 +57,8 @@
           Hemos identificado que la tarea ${object.name} ha excedido las horas destinadas.
           Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/>
           Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
-          Soporte consumido el mes pasado: ${object.total_hors_spent} horas <br/>
-          Horas excedidas: ${round(object.planned_hours - object.total_hors_spent,2)}
+          Soporte consumido el mes pasado: ${object.total_hours_spent} horas <br/>
+          Horas excedidas: ${round(object.planned_hours - object.total_hours_spent,2)}
           Te informamos que las horas de tu póliza "${object.name}" han sido consumidas por completo (100%). En caso de cualquier duda y/o comentario, favor de contactarnos al correo <a href="mailto:ventas@integritas.mx">ventas@integritas.mx</a><br/>
         </p>
       </div>
@@ -113,7 +113,7 @@ for task in model_task:
       template_inst.send_mail(task.id)
       task.write({'is_email_timesheet_send': True})
       count = count + 1
-      if round(task.planned_hours - task.total_hors_spent,2):
+      if round(task.planned_hours - task.total_hours_spent,2):
         template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
         template_inst.send_mail(task.id)
 
