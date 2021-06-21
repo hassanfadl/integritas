@@ -18,6 +18,10 @@
         <div style="text-align: justify;">
           <h2>Estimado ${object.partner_id.name},</h2>
           <p>
+            Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/>
+            Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
+            Soporte consumido el mes pasado: ${object.total_hors_spent} horas <br/>
+            Horas excedidas: ${round(object.planned_hours - object.total_hors_spent,2)}
             Te informamos que las horas de tu póliza "${object.name}" han sido consumidas por completo (100%). En caso de cualquier duda y/o comentario, favor de contactarnos al correo <a href="mailto:ventas@integritas.mx">ventas@integritas.mx</a><br/>
           </p>
         </div>
@@ -32,6 +36,43 @@
     </tbody>
   </table>
 ]]></field>
+        </record>
+        <record id="template_timesheet_integritas_horas_excedidas" model="mail.template">
+                    <field name="name">Timesheet Email Integritas Horas Excedidas</field>
+                    <field name="model_id" ref="project.model_project_task"/>
+                    <field name="email_from">${(object.user_id.email_formatted or user.email_formatted or '') | safe}</field>
+                    <field name="email_to" >jose.torres@integritas.mx</field>
+                    <field name="report_template" ref="report_timesheet_integritas_report" />
+                    <field name="lang"></field>
+                    <field name="subject">Reporte de Horas excedida.</field>
+                    <field name="auto_delete" eval="False"/>
+                    <field name="body_html"><![CDATA[
+<table>
+  <tbody>
+    <tr><br><br><img src="https://integritas.odoo.com/web/image/20390/Integritas.png" width="5%"/><br></tr>
+    <tr>
+      <div style="text-align: justify;">
+        <h2>Estimado José torres,</h2>
+        <p>
+          Hemos identificado que la tarea ${object.name} ha excedido las horas destinadas.
+          Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/>
+          Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
+          Soporte consumido el mes pasado: ${object.total_hors_spent} horas <br/>
+          Horas excedidas: ${round(object.planned_hours - object.total_hors_spent,2)}
+          Te informamos que las horas de tu póliza "${object.name}" han sido consumidas por completo (100%). En caso de cualquier duda y/o comentario, favor de contactarnos al correo <a href="mailto:ventas@integritas.mx">ventas@integritas.mx</a><br/>
+        </p>
+      </div>
+    </tr>
+    <tr>
+      <div>
+        <br/><br/>
+        Atte: Equipo de Integritas <br/>
+        ¡Si puedes imaginarlo podemos programarlo!
+      </div>
+    </tr>
+  </tbody>
+</table>
+        ]]></field>
         </record>
 
   <!--<record id="automatic_action_integritas_timesheet" model="base.automation">
@@ -72,6 +113,11 @@ for task in model_task:
       template_inst.send_mail(task.id)
       task.write({'is_email_timesheet_send': True})
       count = count + 1
+      if round(task.planned_hours - task.total_hors_spent,2):
+        template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
+        template_inst.send_mail(task.id)
+
+
   except:
     raise Warning("Error")
           </field>  
