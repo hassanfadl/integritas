@@ -20,8 +20,8 @@
           <p>
             Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/>
             Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
-            Soporte consumido el mes pasado: ${object.total_hors_spent} horas <br/>
-            Horas excedidas: ${round(object.planned_hours - object.total_hors_spent,2)}
+            Soporte consumido el mes pasado: ${object.total_hours_spent} horas <br/>
+            Horas excedidas: ${round(object.planned_hours - object.total_hours_spent,2)}
             Te informamos que las horas de tu póliza "${object.name}" han sido consumidas por completo (100%). En caso de cualquier duda y/o comentario, favor de contactarnos al correo <a href="mailto:ventas@integritas.mx">ventas@integritas.mx</a><br/>
           </p>
         </div>
