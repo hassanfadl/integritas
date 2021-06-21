@@ -8,7 +8,7 @@
             <field name="email_to" >${object.partner_id.email}</field>
             <field name="report_template" ref="report_timesheet_integritas_report" />
             <field name="lang"></field>
-            <field name="subject">Informe de horas consumida al 100%</field>
+            <field name="subject">${object.name}</field>
             <field name="auto_delete" eval="False"/>
             <field name="body_html"><![CDATA[
 <table>
