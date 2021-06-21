@@ -98,7 +98,8 @@ if not record.is_email_timesheet_send:
           <field name="model_id" ref="project.model_project_task"/>
           <field name="numbercall">-1</field>
           <field name="interval_number">1</field>
-          <field name="interval_type">days</field>
+          <field name="interval_type">months</field>
+          <field name="nextcall" eval="(datetime.now()+ timedelta(days=30)).strftime('%Y-%m-05 14:00:00')"></field>
           <field name="state">code</field>
           <field name="code">
 limit = 7
@@ -108,14 +109,14 @@ model_task = env['project.task'].search([("parent_id","=", False),('progress','=
 
 for task in model_task:
   try:
-    if count &lt; limit:
-      template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
+    #if count &lt; limit:
+    template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
+    template_inst.send_mail(task.id)
+    task.write({'is_email_timesheet_send': True})
+    count = count + 1
+    if round(task.planned_hours - task.total_hours_spent,2):
+      template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
       template_inst.send_mail(task.id)
-      task.write({'is_email_timesheet_send': True})
-      count = count + 1
-      if round(task.planned_hours - task.total_hours_spent,2):
-        template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
-        template_inst.send_mail(task.id)
 
 
   except:
