@@ -60,7 +60,8 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
         
 
         _handleRedirectUrl: function (result) {
-            window.location.href="https://api.whatsapp.com/message/ODJWOG3OBNQJD1"            
+            //window.location.href="https://api.whatsapp.com/message/ODJWOG3OBNQJD1"   
+            window.open('https://api.whatsapp.com/message/ODJWOG3OBNQJD1', '_blank');         
         },
 
 

@@ -100,6 +100,13 @@
 }
 
 @media (max-width: 400px) {
+    .s_image_gallery{
+        height:10rem!important;
+    }
+   
+    #slideshow_1624386365065{
+        margin: 0px!important;
+    }
     section:nth-child(1).s_features[style*='banner_principal']{
         background-image: url(/mx_integritas_theme_integriatas/static/src/img/phone.jpg)!important;
         background-position: center!important;
@@ -177,6 +184,13 @@
         margin-top: -13rem;
         background-size: contain;
         margin-bottom: -13rem!important;
+    }
+    .s_image_gallery{
+        height:10rem!important;
+    }
+   
+    #slideshow_1624386365065{
+        margin: 0px!important;
     }
    #wrap > div > section.s_features[style*='banner_principal'] > div > div > div:nth-child(1) > a > img{
         width: 75px!important;
@@ -289,4 +303,13 @@
 
 .invisible{
     display:none!important;
+}
+#whats-integritas{
+    background-image:url("/mx_integritas_theme_integriatas/static/src/img/bg-whatsapp.PNG")
+}
+#slideshow_1624386365065 div .carousel-item.active{
+    min-height: 25px!important;
+}
+.s_image_gallery{
+    height:20rem!important;
 }

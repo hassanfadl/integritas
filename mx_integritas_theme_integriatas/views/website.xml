@@ -12,7 +12,7 @@
      <template id="mx_integritas_botton_flotante" inherit_id="web.frontend_layout" name="integritasFlotante">
         <!--expr="//body[@t-att-class='body_classname']"-->
         <xpath expr="//div[@id='wrapwrap']" position="inside">
-          <div id="whats-integritas"  style="width:18rem;height: 27rem;background-color: #F5EBDF;border-radius: 5px 5px 5px 5px;z-index:1400!important" class="flotante-cuadro invisible-ws font-ws">
+          <div id="whats-integritas"  style="width:18rem;height: 27rem;border-radius: 5px 5px 5px 5px;z-index:1400!important" class="flotante-cuadro invisible-ws font-ws">
             <table style="background:#075F56;width: 100%;height: 4rem;border-radius: 5px 5px 0px 0px">
               <tr style="margin-left: 1rem;margin-top:5px">
                         <td style="width: 50px;text-align: center">
@@ -75,8 +75,8 @@
             <a  id="btn-whatsapp-integritas" class="flotante href-tel" target="_blank" style="cursor:pointer;">
               <img src="https://integritas.odoo.com/mx_integritas_theme_integriatas/static/src/img/whatsapp.png" class="img-fluid pulse" alt="" width="50rem" height="50rem"/>
             </a>
-            <a  id="btn-up-page" class="flotante-up"  target="_blank" style="cursor:pointer;background:#000000;color:#FFFFFF;border-radius:50%;width:30px;height:30px;text-align:center;">
-              <i class="fa fa-chevron-up"></i>
+            <a  id="btn-up-page" class="flotante-up"  target="_blank" style="cursor:pointer;background:rgba(64,126,201,.75);color:#FFFFFF;border-radius:50%;width:40px;height:40px;text-align:center;">
+              <i class="fa fa-chevron-up" style="margin-top:.6rem"></i>
             </a>
         </xpath>
       </template>
