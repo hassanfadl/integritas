@@ -1,0 +1,152 @@
+<odoo>
+    <data>
+        <template id="mx_integritas_carousel" name="Carousel Integritas">
+            <section >
+            	<div class="container">
+
+					<!--<div class="row mx-auto my-auto">
+		            	<div id="recipeCarousel" class="carousel slide" data-ride="carousel">
+			                <div class="carousel-inner w-100" role="listbox">
+			                	<t t-set="c" t-value="0"/>
+			                	<t t-set="imagenes" t-value="5"/>
+		                		<t t-foreach="request.env['res.partner'].search([('id', '>', 1),('image_1920','=',True)])" t-as="obj">
+								    
+								    <div  t-attf-class="carousel-item {{ 'active' if c == 0 else '' }}" >
+								    	<div class="col-md-4">
+								    		<div class="card card-body">
+										     	<img t-att-src="'data:image/png;base64,%s' % to_text(obj.image_1920)"/><br/>
+					                    		<t t-set="imagenes" t-value="imagenes + 1"/>
+					                    		<t t-set="c" t-value="c + 1"/>
+				                    		</div>
+			                    		</div>
+							    	</div>
+							    </t>
+						    </div>
+				    	</div>
+		             	<a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
+			                <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+			                <span class="sr-only">Previous</span>
+			            </a>
+			            <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
+			                <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+			                <span class="sr-only">Next</span>
+			            </a> 
+
+
+
+
+					</div>-->
+			<div  class="carousel slide">
+	            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+	                <div class="carousel-item active">
+	                    <div class="row">
+	                        <div class="col-3">
+	                            <div class="card h-100" data-url="/shop/ser0005-renta-de-servidores-y-almacenamiento-588#attr=">
+				                    <h5 class="card-header">
+				                        [SER0005] Renta de servidores y almacenamiento
+				                    </h5>
+				                    <div class="card-body">
+				                        <img class="card-img-top p-3" loading="lazy" data-oe-model="ir.ui.view" data-oe-id="4664" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/div[1]/div[1]/img[1]" src="/web/image/product.product/301/image_512?unique=02b7195"/>
+				                        <div class="card-text">
+				                            
+				                        </div>
+				                    </div>
+				                    <div class="card-footer d-flex align-items-center">
+				                        <div class="card-text">
+				                            <span class="oe_currency_value">0.00</span>
+				                        </div>
+				                    </div>
+				                </div> 
+	                        </div>
+	                        <div class="col-3">
+	                            <div class="card h-100" data-url="/shop/servicio-en-parte-de-horas-633#attr=">
+				                    <h5 class="card-header">
+				                        Servicio en parte de horas
+				                    </h5>
+				                    <div class="card-body">
+				                        <img class="card-img-top p-3" loading="lazy" data-oe-model="ir.ui.view" data-oe-id="4664" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/div[1]/div[1]/img[1]" src="/web/image/product.product/346/image_512?unique=a195f7f"/>
+				                        <div class="card-text">
+				                            
+				                        </div>
+				                    </div>
+				                    <div class="card-footer d-flex align-items-center">
+				                        <div class="card-text">
+				                            <span class="oe_currency_value">40.00</span>
+				                        </div>
+				                    </div>
+				                </div> 
+	                        </div>
+	                        <div class="col-3">
+	                            <div class="card h-100" data-url="/shop/servicio-en-parte-de-horas-633#attr=">
+				                    <h5 class="card-header">
+				                        Servicio en parte de horas
+				                    </h5>
+				                    <div class="card-body">
+				                        <img class="card-img-top p-3" loading="lazy" data-oe-model="ir.ui.view" data-oe-id="4664" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/div[1]/div[1]/img[1]" src="/web/image/product.product/346/image_512?unique=a195f7f"/>
+				                        <div class="card-text">
+				                            
+				                        </div>
+				                    </div>
+				                    <div class="card-footer d-flex align-items-center">
+				                        <div class="card-text">
+				                            <span class="oe_currency_value">40.00</span>
+				                        </div>
+				                    </div>
+				                </div> 
+	                        </div>
+	                        <div class="col-3">
+	                            <div class="card h-100" data-url="/shop/servicio-en-parte-de-horas-633#attr=">
+				                    <h5 class="card-header">
+				                        Servicio en parte de horas
+				                    </h5>
+				                    <div class="card-body">
+				                        <img class="card-img-top p-3" loading="lazy" data-oe-model="ir.ui.view" data-oe-id="4664" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/div[1]/div[1]/img[1]" src="/web/image/product.product/346/image_512?unique=a195f7f"/>
+				                        <div class="card-text">
+				                            
+				                        </div>
+				                    </div>
+				                    <div class="card-footer d-flex align-items-center">
+				                        <div class="card-text">
+				                            <span class="oe_currency_value">40.00</span>
+				                        </div>
+				                    </div>
+				                </div> 
+	                        </div>
+	                        <div class="col-3">
+	                            <div class="card h-100" data-url="/shop/servicio-en-parte-de-horas-633#attr=">
+				                    <h5 class="card-header">
+				                        Servicio en parte de horas
+				                    </h5>
+				                    <div class="card-body">
+				                        <img class="card-img-top p-3" loading="lazy" data-oe-model="ir.ui.view" data-oe-id="4664" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/div[1]/div[1]/img[1]" src="/web/image/product.product/346/image_512?unique=a195f7f"/>
+				                        <div class="card-text">
+				                            
+				                        </div>
+				                    </div>
+				                    <div class="card-footer d-flex align-items-center">
+				                        <div class="card-text">
+				                            <span class="oe_currency_value">40.00</span>
+				                        </div>
+				                    </div>
+				                </div> 
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            
+	            <a href="#s_dynamic_snippet_3" class="carousel-control-prev" data-slide="prev" role="button" aria-label="Anterior" title="Anterior">
+	                <span class="fa fa-chevron-circle-left fa-2x"></span>
+	                <span class="sr-only">Anterior</span>
+	            </a>
+	            <a href="#s_dynamic_snippet_3" class="carousel-control-next" data-slide="next" role="button" aria-label="Siguiente" title="Siguiente">
+	                <span class="fa fa-chevron-circle-right fa-2x"></span>
+	                <span class="sr-only">Siguiente</span>
+	            </a>
+	        </div>
+		
+		</div>
+            </section>
+        </template>
+    </data>
+</odoo>
+    

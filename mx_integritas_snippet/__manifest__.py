@@ -27,6 +27,7 @@
         # 'security/ir.model.access.csv',
         'views/formulario.xml',
         'views/snippets.xml',
+        'views/carousel.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

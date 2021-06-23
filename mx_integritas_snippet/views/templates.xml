@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Librerias Custom Snippet">
+      <xpath expr="script[last()]" position="after">
+        <script type="text/javascript" src="/mx_integritas_snippet/static/src/js/index.js"></script>
+         <link rel="stylesheet" href="/mx_integritas_snippet/static/src/css/index.css"/>
+          
+		<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+		
+			
+      </xpath>
+    </template>
+  </data>
+</odoo>

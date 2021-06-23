@@ -5,6 +5,11 @@
             <t t-snippet="mx_integritas_snippet.mx_integritas_form" t-thumbnail="/website/static/src/img/s_website_form.png"/>
         </xpath>
     </template>
+    <template id="snippet_integritas_carousel" inherit_id="website.snippets" name="Snippet Carousel">
+        <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="mx_integritas_snippet.mx_integritas_carousel" t-thumbnail="/mx_integritas_snippet/static/src/img/integritas.png"/>
+        </xpath>
+    </template>
     
     
 </odoo>
