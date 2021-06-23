@@ -28,6 +28,7 @@
         'views/formulario.xml',
         'views/snippets.xml',
         'views/carousel.xml',
+        'views/res_partner.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

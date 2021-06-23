@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
     .carousel-inner .carousel-item > div {
         display: none;
     }
@@ -13,7 +13,7 @@
     display: flex;
 }
 
-/* display 3 */
+
 @media (min-width: 768px) {
     
     .carousel-inner .carousel-item-right.active,
@@ -30,5 +30,8 @@
 .carousel-inner .carousel-item-right,
 .carousel-inner .carousel-item-left{ 
   transform: translateX(0);
-}
+}*/
+
+
+
 
