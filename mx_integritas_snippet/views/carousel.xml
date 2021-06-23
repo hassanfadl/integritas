@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <template id="mx_integritas_carousel" name="Carousel Integritas">
-            
+            <section data-name="Snippet Carousel" class="section-integritas-carousel">
             	<div class="container container-principal-carousel">
 					<div t-att-id="'uniqueId-123'" class="carousel slide pointer-event carousel-integritas-clientes" t-att-data-interval="interval">
 			            <t t-set="count_elements" t-value="0"/>
@@ -53,7 +53,7 @@
 			        </div>
 				
 				</div>
-           
+            </section>
             
         </template>
     </data>
