@@ -2,7 +2,7 @@
     <data>
         <template id="mx_integritas_carousel" name="Carousel Integritas">
             <section data-name="Snippet Carousel" class="section-integritas-carousel">
-				<div t-att-id="'uniqueId-123'" class="carousel slide pointer-event carousel-integritas-clientes" t-att-data-interval="interval">
+				<div  class="carousel slide pointer-event carousel-integritas-clientes" t-att-data-interval="interval">
 		            <t t-set="count_elements" t-value="0"/>
 		            <t t-set="epocasArray" t-value="[]" />
 		            <t t-set="totalArray" t-value="0" />
