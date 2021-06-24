@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <template id="mx_integritas_carousel" name="Carousel Integritas">
+            <section data-name="Snippet Carousel" class="section-integritas-carousel">
+				<div  class="carousel slide pointer-event carousel-integritas-clientes" t-att-data-interval="interval">
+		            <t t-set="count_elements" t-value="0"/>
+		            <t t-set="epocasArray" t-value="[]" />
+		            <t t-set="totalArray" t-value="0" />
+		            <t t-set="epocas" t-value="0"/>
+		            <t t-set="numberArray" t-value="[]" />
+					<t t-foreach="request.env['res.partner'].search([('id', '>', 1),('image_1920','=',True),('client_vip','=',True)])" t-as="obj"> 
+						<t t-set="totalArray" t-value="totalArray + 1"/>
+						<t t-set="count_elements" t-value="count_elements + 1"/>
+						<t t-if="count_elements == 4">
+							<t t-set="epocasArray" t-value="epocasArray+[epocas]" />
+							<t t-set="count_elements" t-value="0"/>
+							<t t-set="epocas" t-value="epocas + 1"/>
+						</t>
+					</t>
+					<t t-if="(totalArray / 4) > 1">
+						<t t-set="epocasArray" t-value="epocasArray+[epocas]" />
+					</t>
+		            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+		            	<t t-foreach="epocasArray" t-as="i">
+			            	<div  t-attf-class="carousel-item {{ 'active' if i == 0 else '' }}">
+			            		<div class="row">
+					            	<t t-set="c" t-value="0"/>
+					            	<t t-set="offset" t-value="4 * i"/>
+				                	<t t-set="imagenes" t-value="5"/>
+				            		<t t-foreach="request.env['res.partner'].search([('id', '>', 1),('image_1920','=',True),('client_vip','=',True)], limit = 4, offset=offset)" t-as="obj">
+								    	<div class="col-3 p-0">
+								    		<div class="card h-100" style="border:solid 0px #FFFFFF">
+								    			<div class="card-body text-center img-carousel-body p-0">
+								    				<a  t-attf-href="{{obj.website}}" target="_blank">
+											     		<img  t-att-src="'data:image/png;base64,%s' % to_text(obj.image_1920)" width="80%" />
+											     	</a><br/>
+						                    		<t t-set="imagenes" t-value="imagenes + 1"/>
+						                    		<t t-set="c" t-value="c + 1"/>
+						                    		<t t-if="imagenes == 4">
+					                    				<t t-set="c" t-value="0"/>
+						                    		</t>
+					                    		</div>
+				                    		</div>
+			                    		</div>
+								    </t>
+							    </div>
+						    </div>
+					    </t> 
+		            </div>
+		            <!---->
+		        </div>
+            </section>
+        </template>
+    </data>
+</odoo>
+    
