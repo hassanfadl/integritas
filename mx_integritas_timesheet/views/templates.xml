@@ -8,7 +8,7 @@
             <field name="email_to" >${object.partner_id.email}</field>
             <field name="report_template" ref="report_timesheet_integritas_report" />
             <field name="lang"></field>
-            <field name="subject">Informe de horas consumida al 100%</field>
+            <field name="subject">${object.name}</field>
             <field name="auto_delete" eval="False"/>
             <field name="body_html"><![CDATA[
 <table>
@@ -18,18 +18,19 @@
         <div style="text-align: justify;">
           <h2>Estimado ${object.partner_id.name},</h2>
           <p>
-            Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/>
+            Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/><br/>
             Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
             Soporte consumido el mes pasado: ${object.total_hours_spent} horas <br/>
             Horas excedidas: ${round(object.planned_hours - object.total_hours_spent,2)}
-            Te informamos que las horas de tu póliza "${object.name}" han sido consumidas por completo (100%). En caso de cualquier duda y/o comentario, favor de contactarnos al correo <a href="mailto:ventas@integritas.mx">ventas@integritas.mx</a><br/>
+            <br/>
           </p>
         </div>
       </tr>
       <tr>
         <div>
           <br/><br/>
-          Atte: Equipo de Integritas <br/>
+          Cualquier duda estamos a sus órdenes. <br/>
+          ¡Gracias y saludos!<br/>
           ¡Si puedes imaginarlo podemos programarlo!
         </div>
       </tr>
@@ -105,7 +106,7 @@ if not record.is_email_timesheet_send:
 limit = 7
 count = 0
 project_id = env['project.project'].search([('name','ilike','Soporte')])[0].id
-model_task = env['project.task'].search([("parent_id","=", False),('progress','=',100),('is_email_timesheet_send','=',False),('name','ilike','Soporte'), ('project_id.id','=',project_id)])
+model_task = env['project.task'].search([("parent_id","=", False),('stage_id.name','!=',"Hecho"),('is_email_timesheet_send','=',False),('name','ilike','Soporte'), ('project_id.id','=',project_id)])
 
 for task in model_task:
   try:
