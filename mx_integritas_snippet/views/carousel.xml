@@ -20,7 +20,7 @@
 					<t t-if="(totalArray / 4) > 1">
 						<t t-set="epocasArray" t-value="epocasArray+[epocas]" />
 					</t>
-		            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+		            <div class="carousel-inner row  mx-auto" role="listbox" style="width:80%">
 		            	<t t-foreach="epocasArray" t-as="i">
 			            	<div  t-attf-class="carousel-item {{ 'active' if i == 0 else '' }}">
 			            		<div class="row">
