@@ -5,7 +5,7 @@
             <t t-call="web.external_layout">
                 <div class="page">
                     <h1>Reporte de Horas</h1>
-                    <strong>Estimad@</strong><strong t-field="o.partner_id.name"></strong>
+                    <strong>Estimad@ </strong><strong t-field="o.partner_id.name"></strong><br/>
                     <p>Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/>
                     Horas disponibles para el mes pasado: <strong t-field="o.planned_hours"></strong> horas <br/>
                     Soporte consumido el mes pasado: <strong t-field="o.total_hours_spent"></strong> horas <br/></p>
