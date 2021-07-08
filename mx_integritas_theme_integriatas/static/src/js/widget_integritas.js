@@ -70,6 +70,7 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
             //window.location.href="https://api.whatsapp.com/message/ODJWOG3OBNQJD1"   
            setTimeout(function(){
                 $("#text_whatsapp").html(result)   
+                $("#second-conversation").removeClass("invisible")
             }, 1500);
                
         },

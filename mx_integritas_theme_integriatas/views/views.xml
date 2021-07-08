@@ -5,12 +5,10 @@
         <field name="model" >website</field>
         <field name="inherit_id" ref="website.view_website_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='other']" position="after">
-                <notebook>
-                    <page string="Boton WhatsApp">
-                        <field name="text_whatsapp" placeholder="Add a description..."/>
-                    </page>
-                </notebook>
+            <xpath expr="//page[last()]" position="after">
+              <page string="Boton WhatsApp">
+                  <field name="text_whatsapp" placeholder="Add a description..."/>
+              </page>     
             </xpath>
         </field>
     </record>

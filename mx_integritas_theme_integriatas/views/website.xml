@@ -12,7 +12,7 @@
      <template id="mx_integritas_botton_flotante" inherit_id="web.frontend_layout" name="integritasFlotante">
         <!--expr="//body[@t-att-class='body_classname']"-->
         <xpath expr="//div[@id='wrapwrap']" position="inside">
-          <div id="whats-integritas"  style="width:18rem;height: 27rem;border-radius: 5px 5px 5px 5px;z-index:1400!important" class="flotante-cuadro invisible-ws font-ws">
+          <div id="whats-integritas"  style="width:18rem;height: 28.5rem;border-radius: 5px 5px 5px 5px;z-index:1400!important" class="flotante-cuadro invisible-ws font-ws">
             <table style="background:#075F56;width: 100%;height: 4rem;border-radius: 5px 5px 0px 0px">
               <tr style="margin-left: 1rem;margin-top:5px">
                         <td style="width: 50px;text-align: center">
@@ -43,7 +43,7 @@
                     </tr>
 
                 </table>
-                <table>
+                <table id="second-conversation" class="invisible">
                     <tr>
                         <td style="width:80px"></td>
                         <td style="width:70px;padding-right:-5rem">
