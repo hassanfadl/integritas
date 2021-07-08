@@ -29,13 +29,16 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
         },
         start: function() {
             console.log("Start Integritas")
+            
         },
          _botonWhatsApp: function (ev) {
-            $("#whats-integritas").removeClass("invisible-ws")            
+            $("#whats-integritas").removeClass("invisible-ws")  
+            dp.add(this._rpc({route: '/whatsapp/get_text',})).then(this._HandleGetText.bind(this));          
         },
         _boton_up_page:function(ev){
             $("html, body").animate({ scrollTop: 0 }, "slow");
         },_botonWhatsApp_submit: function (ev) {
+
             var name = $("input[name='wsintegritasname']").val();
             var email = $("input[name='wsintegritasemail']").val();
             var phone = $("input[name='wsintegritasphone']").val();
@@ -62,6 +65,13 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
         _handleRedirectUrl: function (result) {
             //window.location.href="https://api.whatsapp.com/message/ODJWOG3OBNQJD1"   
             window.open('https://api.whatsapp.com/message/ODJWOG3OBNQJD1', '_blank');         
+        },
+        _HandleGetText: function (result) {
+            //window.location.href="https://api.whatsapp.com/message/ODJWOG3OBNQJD1"   
+           setTimeout(function(){
+                $("#text_whatsapp").html(result)   
+            }, 1500);
+               
         },
 
 
