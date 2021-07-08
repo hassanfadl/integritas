@@ -39,6 +39,6 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 
 		texto = "Hola, ¿Te gustaría solicitar información o una cotización? Ingresa tu email y número telefónico para ponernos en contacto contigo."
 		query = request.env['website'].sudo().search([('id', '=',website_id)])
-		if query:
+		if query.text_whatsapp:
 			texto = query.text_whatsapp
 		return texto
