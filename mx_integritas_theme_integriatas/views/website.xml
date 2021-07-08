@@ -57,7 +57,7 @@
                                         <input type="email" placeholder="Email"  class="form-control form-control-sm" name="wsintegritasemail" required="true" style="background:#DCF8C6" />
                                     </div>
                                     <div style="margin-top:1px">
-                                        <input type="number" placeholder="Telefono" class="form-control form-control-sm" name="wsintegritasphone" required="true" style="background:#DCF8C6" />
+                                        <input type="number" placeholder="Telefono" class="form-control form-control-sm" name="wsintegritasphone" min="0" required="true" style="background:#DCF8C6" />
                                     </div>
                                     <div style="line-height:1!important;font-size:.7rem!important">
                                         <small id="error_whatsapp" class="text-danger invisible">Campos incorrectos verifica que tu información sea válida.</small>

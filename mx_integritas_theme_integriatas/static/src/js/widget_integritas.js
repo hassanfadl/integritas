@@ -71,7 +71,7 @@ odoo.define('mx_integritas_theme_integriatas.website_widget', function (require)
            setTimeout(function(){
                 $("#text_whatsapp").html(result)   
                 $("#second-conversation").removeClass("invisible")
-            }, 1500);
+            }, 1100);
                
         },
 
