@@ -82,7 +82,7 @@
       id="report_timesheet_integritas_report"
       model="project.task"
       string="Timesheet"
-      name="mx_integritas_timesheet.report_timesheet_integritas"
+      name="Informe_Mensual_Soporte"
       report_type="qweb-pdf"
       print_report_name="'Reporte de Horas'"
   />

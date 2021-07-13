@@ -9,7 +9,8 @@
             <field name="report_template" ref="report_timesheet_integritas_report" />
             <field name="lang"></field>
             <field name="subject">${object.name}</field>
-            <field name="auto_delete" eval="False"/>
+            <field name="email_cc">jose.torres@integritas.mx</field>
+            <field name="auto_delete" eval="True"/>
             <field name="body_html"><![CDATA[
 <table>
   <tbody>
@@ -50,29 +51,29 @@
                     <field name="body_html"><![CDATA[
 <table>
   <tbody>
-    <tr><br><br><img src="https://integritas.odoo.com/web/image/20390/Integritas.png" width="5%"/><br></tr>
-    <tr>
-      <div style="text-align: justify;">
-        <h2>Estimado José torres,</h2>
-        <p>
-          Hemos identificado que la tarea ${object.name} ha excedido las horas destinadas.
-          Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/>
-          Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
-          Soporte consumido el mes pasado: ${object.total_hours_spent} horas <br/>
-          Horas excedidas: ${round(object.planned_hours - object.total_hours_spent,2)}
-          Te informamos que las horas de tu póliza "${object.name}" han sido consumidas por completo (100%). En caso de cualquier duda y/o comentario, favor de contactarnos al correo <a href="mailto:ventas@integritas.mx">ventas@integritas.mx</a><br/>
-        </p>
-      </div>
-    </tr>
-    <tr>
-      <div>
-        <br/><br/>
-        Atte: Equipo de Integritas <br/>
-        ¡Si puedes imaginarlo podemos programarlo!
-      </div>
-    </tr>
-  </tbody>
-</table>
+      <tr><br><br><img src="https://integritas.odoo.com/web/image/20390/Integritas.png" width="5%"/><br></tr>
+      <tr>
+        <div style="text-align: justify;">
+          <h2>Estimado ${object.partner_id.name},</h2>
+          <p>
+            Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/><br/>
+            Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
+            Soporte consumido el mes pasado: ${object.total_hours_spent} horas <br/>
+            Horas excedidas: ${round(object.planned_hours - object.total_hours_spent,2)}
+            <br/>
+          </p>
+        </div>
+      </tr>
+      <tr>
+        <div>
+          <br/><br/>
+          Cualquier duda estamos a sus órdenes. <br/>
+          ¡Gracias y saludos!<br/>
+          ¡Si puedes imaginarlo podemos programarlo!
+        </div>
+      </tr>
+    </tbody>
+  </table>
         ]]></field>
         </record>
 
