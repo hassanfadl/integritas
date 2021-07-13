@@ -131,7 +131,7 @@ for task in model_task:
       <field name="numbercall">-1</field>
       <field name="interval_number">1</field>
       <field name="interval_type">days</field>
-      <field name="nextcall" eval="(datetime.now()+ timedelta(days=1)).strftime('%Y-%m-%d 9:00:00')"/>
+      <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-05 9:00:00')"/>
       <field name="state">code</field>
       <field name="code">
 limit = 7
