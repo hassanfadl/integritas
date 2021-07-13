@@ -125,37 +125,34 @@ for task in model_task:
           </field>  
     </record>
 
+    <record id="accion_planificada_parte_horas_diario" model="ir.cron">
+      <field name="name">Correo Timesheet Diario</field>
+      <field name="model_id" ref="project.model_project_task"/>
+      <field name="numbercall">-1</field>
+      <field name="interval_number">1</field>
+      <field name="interval_type">days</field>
+      <field name="state">code</field>
+      <field name="code">
+limit = 7
+count = 0
+project_id = env['project.project'].search([('name','ilike','Soporte')])[0].id
+model_task = env['project.task'].search([("parent_id","=", False),('stage_id.name','!=',"Hecho"),('is_email_timesheet_send','=',False),('name','ilike','Soporte'),('name','not ilike','Bolsa'),('name','not ilike','bolsa'), ('project_id.id','=',project_id)])
+
+for task in model_task:
+  try:
+    if task.remaining_hours &lt;= 0:
+      template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
+      template_inst.send_mail(task.id)
+      task.write({'is_email_timesheet_send': True})
+      count = count + 1
+      if round(task.planned_hours - task.total_hours_spent,2):
+        template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
+        template_inst.send_mail(task.id)
+  except:
+    raise Warning("Error")
+      </field>  
+    </record>
+
   </data>
 </odoo>
 
-<!--Correo remplazado-->
-<!--
-<tr>
-        <div style="display:table;">
-            <div style="display:table-header-group;">
-                <div style="display:table-row;">
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem;background-color: #29a9e0;color:#FFFFFF;">Fecha</div>
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem;background-color: #29a9e0;color:#FFFFFF;">Colaborador</div>
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 50rem;background-color: #29a9e0;color:#FFFFFF;">Descripción</div>
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem;background-color: #29a9e0;color:#FFFFFF;">Horas</div>
-                </div>
-            </div>
-            <div style="display:table-row-group;">
-                % for dato in object.timesheet_ids:
-                <div style="display:table-row;">
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem">${dato.date}</div>
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem">${dato.employee_id.name}</div>
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:left;padding:1rem;width: 50rem">${dato.name}</div>
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem">${dato.unit_amount}</div>
-                </div>
-                % endfor
-                <div style="display:table-row;">
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem"></div>
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem"></div>
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:left;padding:1rem;width: 50rem"><strong>Horas Consumidas</strong></div>
-                    <div style="display:table-cell;border:solid .5px #5E5E5E;text-align:center;padding:1rem;width: 5rem"><strong>${object.effective_hours}</strong></div>
-                </div>
-            </div>
-        </div>
-      </tr>
--->
