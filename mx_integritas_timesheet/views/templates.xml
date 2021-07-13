@@ -131,25 +131,11 @@ for task in model_task:
       <field name="numbercall">-1</field>
       <field name="interval_number">1</field>
       <field name="interval_type">days</field>
-      <!--<field name="nextcall" eval="(datetime.now()+ timedelta(days=1)).strftime('%Y-%m-%d 9:00:00')"></field>-->
+      <field name="nextcall" eval="(datetime.now()+ timedelta(days=1)).strftime('%Y-%m-%d 9:00:00')"></field>
       <field name="state">code</field>
       <field name="code">
 limit = 7
-count = 0
-project_id = env['project.project'].search([('name','ilike','Soporte')])[0].id
-model_task = env['project.task'].search([("parent_id","=", False),('stage_id.name','!=',"Hecho"),('is_email_timesheet_send','=',False),('name','ilike','Soporte'),('name','not ilike','Bolsa'),('name','not ilike','bolsa'), ('project_id.id','=',project_id), ('remaining_hours','&lt;=',0)])
 
-for task in model_task:
-  try:
-    template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
-    template_inst.send_mail(task.id)
-    task.write({'is_email_timesheet_send': True})
-    count = count + 1
-    if round(task.planned_hours - task.total_hours_spent,2):
-      template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
-      template_inst.send_mail(task.id)
-  except:
-    raise Warning("Error")
       </field>  
     </record>
 
