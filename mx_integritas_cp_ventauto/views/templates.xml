@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+      <template id="assets_frontend" inherit_id="website.assets_frontend" name="VistaCodigoPostal">
+        <xpath expr="script[last()]" position="after">
+          <script type="text/javascript" src="/mx_integritas_cp_ventauto/static/src/js/index.js"></script>
+        </xpath>
+      </template>
+      <template id="address" inherit_id="website_sale.address" priority="11">
+        
+        
+        <xpath expr="//h2[@class='o_page_header mt8']/.." position="replace">
+            
+                <h2 class="o_page_header mt8">Ingresa tus datos
+                    <!--<small> o </small>-->
+                    <!--a role="button" href="/web/login?redirect=/shop/checkout" class="btn btn-primary" style="margin-top: -11px">Ingresa</a>-->
+                </h2>
+              
+        </xpath>
+        <xpath expr="//div[@id='div_phone']" position="after" >
+            <div t-attf-class="form-group #{error.get('zip') and 'has-error' or ''} col-md-6 col-xs-6 div_zip">
+                <label class="control-label col-form-label" for="zip">C.P.</label>
+                <input type="number" min="1" max="999999" name="zip" class="form-control" t-att-value="'zip' in checkout and checkout['zip']" />
+            </div>
+            <div t-attf-class="form-group  col-md-6 col-xs-6 div_mx_integritas_colonia" style="display:none">
+                <label class="control-label label-optional" for="mx_integritas_colonia">Colonia</label>
+                <input type="text" name="l10n_mx_edi_colony" class="form-control" t-att-value="'l10n_mx_edi_colony' in checkout and checkout['l10n_mx_edi_colony']" />
+                <select id="mx_integritas_colonia" name="mx_integritas_colonia" style="display:none" t-attf-class="form-control">
+                <option t-att-value="checkout and checkout['mx_integritas_colonia']"></option>
+                </select>
+            </div> 
+            <div class="w-100"/>
+            <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-lg-6 div_country" style="display:none">
+                <label  for="country_id">Ciudad</label>
+                <select id="country_id" name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                    <option value="">Ciudad</option>
+                    <t t-foreach="countries" t-as="c">
+                        <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">
+                            <t t-esc="c.name"/>
+                        </option>
+                    </t>
+                </select>
+            </div>
+            <div t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} col-lg-6 div_state" style="display:none" t-att-style="(not country or not country.state_ids) and 'display: none'">
+                <label  for="state_id">Estado / Proviencia</label>
+                <select name="state_id" t-attf-class="form-control #{error.get('state_id') and 'is-invalid' or ''}" data-init="1">
+                    <option value="">Estado / Proviencia</option>
+                    <t t-foreach="country and country.state_ids or []" t-as="s">
+                        <option t-att-value="s.id" t-att-selected="s.id == ('state_id' in checkout and country and checkout['state_id'] != '' and int(checkout['state_id']))">
+                            <t t-esc="s.name"/>
+                        </option>
+                    </t>
+                </select>
+            </div>     
+            <div class="mt-3 mb-3">
+                Al continuar acepto los <a href="/aviso-de-privacidad" target="_blank">Terminos y Condiciónes</a> de la <a href="/aviso-de-privacidad" target="_blank">Política de privacidad</a> de Ventauto.
+            </div>       
+        </xpath>
+      </template>
+
+      
+    </data>
+</odoo>
