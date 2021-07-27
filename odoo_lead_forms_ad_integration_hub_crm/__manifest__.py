@@ -1,0 +1,17 @@
+{
+    'name': 'Odoo CRM Social Media Lead Form Ads Campaign Integration App',
+    'version': '14.0.0',
+    'author': 'Pragmatic TechSoft Pvt Ltd.',
+    "website": "http://www.pragtech.co.in",
+    'category': 'Other',
+    'summary': 'Linkedin Lead forms Facebook Lead Forms Instagram Lead Forms Pinterest',
+    'description': "Odoo CRM Social Media Lead Form Ads Campaign Integration App",
+    'depends': ['crm'],
+    'images': ['static/description/gif-Odoo-lead-forms-ad-integrati.gif'],
+    'live_test_url': 'https://www.pragtech.co.in/company/proposal-form.html?id=103&name=odoo-lead-form-ad-integration',
+    'license': 'OPL-1',
+    'price': 99.00,
+    'currency': 'USD',
+    'auto_install': False,
+    'installable': True,
+}
