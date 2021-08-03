@@ -1,6 +1,5 @@
 <odoo>
     <data>
-
         <record id="template_timesheet_integritas" model="mail.template">
             <field name="name">Timesheet Email Integritas</field>
             <field name="model_id" ref="project.model_project_task"/>
@@ -75,25 +74,7 @@
     </tbody>
   </table>
         ]]></field>
-        </record>
-
-  <!--<record id="automatic_action_integritas_timesheet" model="base.automation">
-        <field name="name">Timesheet Report Integritas</field>
-        <field name="model_id" ref="project.model_project_task"/>
-
-        <field name="state">code</field>
-        <field name="code">
-if not record.is_email_timesheet_send:
-  template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
-  template_inst.send_mail(record.id)
-  record.write({'is_email_timesheet_send': True})
-        </field>
-        <field name="trigger">on_write</field>
-        <field name="filter_domain">["&amp;","&amp;","&amp;",["name","ilike","Soporte"],["project_id.name","ilike","Soporte"],["progress",">=",100],["is_email_timesheet_send","=",False]]</field>
-        <field name="active" eval="True"/>
-    </record>-->
-
-    
+        </record>   
 
     <record id="accion_planificada_parte_horas" model="ir.cron">
           <field name="name">Demonio envío masivo de Correos</field>
@@ -119,8 +100,6 @@ for task in model_task:
     if round(task.planned_hours - task.total_hours_spent,2):
       template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
       template_inst.send_mail(task.id)
-
-
   except:
     raise Warning("Error")
           </field>  

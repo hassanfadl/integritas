@@ -84,6 +84,6 @@
       string="Timesheet"
       name="mx_integritas_timesheet.report_timesheet_integritas"
       report_type="qweb-pdf"
-      print_report_name="'Reporte de Horas'"
+      print_report_name="'Informe_Mensual_Soporte'"
   />
 </odoo>
