@@ -16,11 +16,11 @@ class ControllerMassMailing(http.Controller):
 
     @http.route('/website_mass_mailing/subscribe/replace', type='json', website=True, auth="public")
     def subscribe(self, list_id, email,  **post):
-        if not request.env['ir.http']._verify_request_recaptcha_token('website_mass_mailing_subscribe'):
+        '''if not request.env['ir.http']._verify_request_recaptcha_token('website_mass_mailing_subscribe'):
             return {
                 'toast_type': 'danger',
                 'toast_content': _("Suspicious activity detected by Google reCaptcha."),
-            }
+            }'''
         ContactSubscription = request.env['mailing.contact.subscription'].sudo()
         Contacts = request.env['mailing.contact'].sudo()
         name, email = Contacts.get_name_email(email)

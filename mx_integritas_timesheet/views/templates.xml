@@ -1,6 +1,5 @@
 <odoo>
     <data>
-
         <record id="template_timesheet_integritas" model="mail.template">
             <field name="name">Timesheet Email Integritas</field>
             <field name="model_id" ref="project.model_project_task"/>
@@ -8,7 +7,7 @@
             <field name="email_to" >${object.partner_id.email}</field>
             <field name="report_template" ref="report_timesheet_integritas_report" />
             <field name="lang"></field>
-            <field name="subject">${object.name}</field>
+            <field name="subject">Informe Mensual Soporte</field>
             <field name="email_cc">jose.torres@integritas.mx</field>
             <field name="auto_delete" eval="True"/>
             <field name="body_html"><![CDATA[
@@ -22,7 +21,11 @@
             Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/><br/>
             Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
             Soporte consumido el mes pasado: ${object.total_hours_spent} horas <br/>
-            Horas excedidas: ${round(object.planned_hours - object.total_hours_spent,2)}
+            % if not object.status_hours_exceded:
+              Horas restantes ${object.remaining_hours} horas <br> 
+            % else:
+              Horas Excedidas ${object.remaining_hours * -1} horas <br> 
+            % endif
             <br/>
           </p>
         </div>
@@ -46,7 +49,7 @@
                     <field name="email_to" >jose.torres@integritas.mx</field>
                     <field name="report_template" ref="report_timesheet_integritas_report" />
                     <field name="lang"></field>
-                    <field name="subject">Reporte de Horas excedida.</field>
+                    <field name="subject">Informe Mensual Soporte (Excedido) ${(object.effective_hours * 100)/(object.planned_hours)} %</field>
                     <field name="auto_delete" eval="False"/>
                     <field name="body_html"><![CDATA[
 <table>
@@ -59,7 +62,12 @@
             Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/><br/>
             Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
             Soporte consumido el mes pasado: ${object.total_hours_spent} horas <br/>
-            Horas excedidas: ${round(object.planned_hours - object.total_hours_spent,2)}
+            
+            % if not object.status_hours_exceded:
+              Horas restantes ${object.remaining_hours} horas <br> 
+            % else:
+              Horas Excedidas ${object.remaining_hours * -1} horas <br> 
+            % endif
             <br/>
           </p>
         </div>
@@ -76,24 +84,6 @@
   </table>
         ]]></field>
         </record>
-
-  <!--<record id="automatic_action_integritas_timesheet" model="base.automation">
-        <field name="name">Timesheet Report Integritas</field>
-        <field name="model_id" ref="project.model_project_task"/>
-
-        <field name="state">code</field>
-        <field name="code">
-if not record.is_email_timesheet_send:
-  template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
-  template_inst.send_mail(record.id)
-  record.write({'is_email_timesheet_send': True})
-        </field>
-        <field name="trigger">on_write</field>
-        <field name="filter_domain">["&amp;","&amp;","&amp;",["name","ilike","Soporte"],["project_id.name","ilike","Soporte"],["progress",">=",100],["is_email_timesheet_send","=",False]]</field>
-        <field name="active" eval="True"/>
-    </record>-->
-
-    
 
     <record id="accion_planificada_parte_horas" model="ir.cron">
           <field name="name">Demonio envío masivo de Correos</field>
@@ -116,45 +106,12 @@ for task in model_task:
     template_inst.send_mail(task.id)
     task.write({'is_email_timesheet_send': True})
     count = count + 1
-    if round(task.planned_hours - task.total_hours_spent,2):
+    if task.remaining_hours &lt; 0:
       template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
       template_inst.send_mail(task.id)
-
-
   except:
     raise Warning("Error")
           </field>  
     </record>
-
-    <record id="accion_planificada_parte_horas_diario" model="ir.cron">
-      <field name="name">Correo Timesheet Diario</field>
-      <field name="model_id" ref="project.model_project_task"/>
-      <field name="numbercall">-1</field>
-      <field name="interval_number">1</field>
-      <field name="interval_type">days</field>
-      <field name="nextcall" eval="(datetime.now()+ timedelta(days=1)).strftime('%Y-%m-%d 14:00:00')"></field>
-      <field name="state">code</field>
-      <field name="code">
-limit = 7
-count = 0
-project_id = env['project.project'].search([('name','ilike','Soporte')])[0].id
-model_task = env['project.task'].search([("parent_id","=", False),('stage_id.name','!=',"Hecho"),('is_email_timesheet_send','=',False),('name','ilike','Soporte'),('name','not ilike','Bolsa'),('name','not ilike','bolsa'), ('project_id.id','=',project_id), ('remaining_hours','&lt;=',0)])
-
-for task in model_task:
-  try:
-    
-    template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
-    template_inst.send_mail(task.id)
-    task.write({'is_email_timesheet_send': True})
-    count = count + 1
-    if round(task.planned_hours - task.total_hours_spent,2):
-      template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
-      template_inst.send_mail(task.id)
-  except:
-    raise Warning("Error")
-      </field>  
-    </record>
-
   </data>
 </odoo>
-
