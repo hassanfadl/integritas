@@ -98,19 +98,20 @@ limit = 7
 count = 0
 project_id = env['project.project'].search([('name','ilike','Soporte')])[0].id
 model_task = env['project.task'].search([("parent_id","=", False),('is_email_timesheet_send','=',False),('name','ilike','Soporte'),('name','not ilike','Bolsa'),('name','not ilike','bolsa'), ('project_id.id','=',project_id)])
-
+month_before = datetime.datetime.now() - datetime.timedelta(days=30)
 for task in model_task:
-  try:
-    #if count &lt; limit:
-    template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
-    template_inst.send_mail(task.id)
-    task.write({'is_email_timesheet_send': True})
-    count = count + 1
-    if task.remaining_hours &lt; 0:
-      template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
+  if int(str(task.date_deadline.month)) &lt;= int(str(month_before.month)):
+    try:
+      #if count &lt; limit:
+      template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
       template_inst.send_mail(task.id)
-  except:
-    raise Warning("Error")
+      task.write({'is_email_timesheet_send': True})
+      count = count + 1
+      if task.remaining_hours &lt; 0:
+        template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
+        template_inst.send_mail(task.id)
+    except:
+      raise Warning("Error")
           </field>  
     </record>
   </data>
