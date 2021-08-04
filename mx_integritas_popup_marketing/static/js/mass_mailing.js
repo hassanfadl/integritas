@@ -44,7 +44,7 @@ odoo.define('mx_integritas_popup_marketing.popup', function (require) {
         return false;
       }
       this.$target.removeClass('o_has_error').find('.form-control').removeClass('is-invalid');
-      const tokenObj = await this._recaptcha.getToken('website_form');
+      /*const tokenObj = await this._recaptcha.getToken('website_form');
       if (tokenObj.error) {
           self.displayNotification({
               type: 'danger',
@@ -53,7 +53,7 @@ odoo.define('mx_integritas_popup_marketing.popup', function (require) {
               sticky: true,
           });
           return false;
-      }
+      }*/
       
       this._rpc({
           route: '/website_mass_mailing/subscribe/replace',
@@ -61,7 +61,7 @@ odoo.define('mx_integritas_popup_marketing.popup', function (require) {
               'list_id': this.$target.data('list-id'),
               'email': $email.length ? $email.val() : false,
               'name' : $name.val().toLowerCase(),
-              recaptcha_token_response: tokenObj.token,
+              recaptcha_token_response: "no_token",
           },
       }).then(function (result) {
           let toastType = result.toast_type;
