@@ -944,12 +944,12 @@ if not employee.l10n_mx_edi_is_assimilated:
         <field name="amount_python_compute">
 income_period = categories.PERGRA
 # Table ISR (limite_inferior, limite_superior, cuota_fija, tasa)
-table = {'05': [(0.01, 578.52, 0.00, 0.0192), (578.53, 4910.18, 11.11, 0.0640),
-         (4910.19, 8629.20, 288.33, 0.1088), (8629.21, 10031.07, 692.96, 0.1600),
-         (10031.08, 12009.94, 917.26, 0.1792), (12009.95, 24222.31, 1271.87, 0.2136),
-         (24222.32, 38177.69, 3880.44, 0.2352), (38177.70, 72887.50, 7162.74, 0.3000),
-         (72887.51, 97183.33, 17575.69, 0.3200), (97183.34, 291550.00, 25350.35, 0.3400),
-         (291550.01, 999999999, 91435.02, 0.3500)],
+table = {'05': [(0.01, 644.58, 0.00, 0.0192), (644.59, 5470.92, 12.38, 0.0640),
+         (5470.93, 9614.66, 321.26, 0.1088), (9614.67, 11176.62, 772.10, 0.1600),
+         (11176.63, 13381.47, 1022.01, 0.1792), (13381.48, 26988.50, 1417.12, 0.2136),
+         (26988.51, 42537.58, 4323.58, 0.2352), (42537.59, 81211.25, 7980.73, 0.3000),
+         (81211.26, 108281.67, 19582.83, 0.3200), (108281.68, 24845.01, 28245.36, 0.3400),
+         (324845.02, 999999999, 101876.90, 0.3500)],
          '04': [(0.01, 285.45, 0.00, 0.0192), (285.46, 2422.80, 5.55, 0.0640),
          (2422.81, 4257.90, 142.20,  0.1088), (4257.91, 4949.55, 341.85,  0.1600),
          (4949.56, 5925.90, 452.55,  0.1792), (5925.91, 11951.85, 627.60, 0.2136),
@@ -982,7 +982,7 @@ if table_isr:
             extra = income_period - value[0]
             result = ((extra * value[3]) + value[2]) * -1
             break
-if employee.env['hr.payslip'].browse(payslip.id).l10n_mx_edi_is_last_payslip():
+'''if employee.env['hr.payslip'].browse(payslip.id).l10n_mx_edi_is_last_payslip():
     category = employee.env.ref('l10n_mx_edi_payslip.hr_salary_rule_category_perception_mx_taxed')
     payslips = employee.slip_ids.filtered(lambda sl: sl.state == 'done' and sl.id != payslip.id and sl.date_from.month == payslip.date_from.month and sl.date_from.year == payslip.date_from.year)
     lines = payslips.mapped('line_ids')
@@ -993,7 +993,7 @@ if employee.env['hr.payslip'].browse(payslip.id).l10n_mx_edi_is_last_payslip():
             result = ((extra * value[3]) + value[2]) * -1
             break
     rule = employee.env.ref('l10n_mx_edi_payslip.hr_rule_l10n_mx_payroll_deduction_isr')
-    result = result - sum(lines.filtered(lambda li: li.salary_rule_id == rule).mapped('total'))</field>
+    result = result - sum(lines.filtered(lambda li: li.salary_rule_id == rule).mapped('total'))'''</field>
     </record>
     <record id="hr_rule_l10n_mx_payroll_other_payment_aux_002" model="hr.salary.rule">
         <field name="name">Auxiliar Subsidio para el empleo</field>
