@@ -819,7 +819,7 @@ class HrPayslip(models.Model):
         _logger.warning(objectify.fromstring(cfdi).Emisor.get('Rfc', objectify.fromstring(cfdi).Emisor.get('rfc')))
         _logger.warning("=========================")
 
-        return objectify.fromstring(cfdi).replaceAll("<","&lt;").replaceAll(">","&gt;")
+        return objectify.fromstring(cfdi).replaceAll("<","&lt;")
 
     @staticmethod
     def _l10n_mx_get_serie_and_folio(number):
