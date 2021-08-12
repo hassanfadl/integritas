@@ -817,7 +817,7 @@ class HrPayslip(models.Model):
         _logger.warning("=========================")
         #_logger.warning(objectify.fromstring(cfdi).Emisor.get('Rfc', objectify.fromstring(cfdi).Emisor.get('rfc')))
         _logger.warning("=========================")
-        return objectify.parse(cfdi)
+        return objectify.fromstring(cfdi)
 
 
     @staticmethod
