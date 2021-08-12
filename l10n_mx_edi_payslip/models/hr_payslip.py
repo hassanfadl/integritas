@@ -815,11 +815,11 @@ class HrPayslip(models.Model):
             cfdi = base64.decodebytes(self.l10n_mx_edi_cfdi)
         _logger.warning("=========================")
         _logger.warning(cfdi)
-        _logger.warning(objectify.fromstring(cfdi))
+        _logger.warning(type(objectify.fromstring(cfdi)))
         _logger.warning(objectify.fromstring(cfdi).Emisor.get('Rfc', objectify.fromstring(cfdi).Emisor.get('rfc')))
         _logger.warning("=========================")
 
-        return objectify.fromstring(cfdi).replaceAll("<","&lt;")
+        return objectify.fromstring(cfdi)
 
     @staticmethod
     def _l10n_mx_get_serie_and_folio(number):
