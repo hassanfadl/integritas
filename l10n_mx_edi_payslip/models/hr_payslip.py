@@ -813,7 +813,7 @@ class HrPayslip(models.Model):
         
         if cfdi is None:
             cfdi = base64.decodebytes(self.l10n_mx_edi_cfdi)
-        print(cfdi)
+        _logger.warning(cfdi)
         return objectify.fromstring(cfdi)
 
     @staticmethod
