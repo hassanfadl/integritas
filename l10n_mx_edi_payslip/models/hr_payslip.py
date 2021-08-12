@@ -816,7 +816,7 @@ class HrPayslip(models.Model):
         _logger.warning("=========================")
         _logger.warning(cfdi)
         _logger.warning(objectify.fromstring(cfdi))
-        _logger.warning(tree.get('Total', objectify.fromstring(cfdi).get('total')))
+        _logger.warning(objectify.fromstring(cfdi).get('total'))
         _logger.warning("=========================")
 
         return objectify.fromstring(cfdi)
