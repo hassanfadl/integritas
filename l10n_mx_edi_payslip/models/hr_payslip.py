@@ -335,8 +335,10 @@ class HrPayslip(models.Model):
         # get the cfdi as eTree
         cfdi = self.l10n_mx_edi_get_xml_etree()
         # return the cadena
-        return self.env['account.move'].l10n_mx_edi_generate_cadena(
-            xslt_path, cfdi)
+        #return self.env['account.move'].l10n_mx_edi_generate_cadena(
+        #    xslt_path, cfdi)
+        cadena_root = etree.parse(tools.file_open(xslt_path))
+        return str(etree.XSLT(cadena_root)(cfdi))
 
     # -------------------------------------------------------------------------
     # SAT/PAC service methods
