@@ -335,8 +335,10 @@ class HrPayslip(models.Model):
         # get the cfdi as eTree
         cfdi = self.l10n_mx_edi_get_xml_etree()
         # return the cadena
-        return self.env['account.move'].l10n_mx_edi_generate_cadena(
-            xslt_path, cfdi)
+        #return self.env['account.move'].l10n_mx_edi_generate_cadena(
+        #    xslt_path, cfdi)
+        cadena_root = etree.parse(tools.file_open(xslt_path))
+        return str(etree.XSLT(cadena_root)(cfdi))
 
     # -------------------------------------------------------------------------
     # SAT/PAC service methods
@@ -812,9 +814,14 @@ class HrPayslip(models.Model):
         self.ensure_one()
         
         if cfdi is None:
-            cfdi = base64.decodebytes(self.l10n_mx_edi_cfdi)
-        print(cfdi)
+            #cfdi = base64.decodebytes(self.l10n_mx_edi_cfdi)
+            cfdi = self.l10n_mx_edi_cfdi
+            return objectify.fromstring(cfdi)
+        _logger.warning("=========================")
+        #_logger.warning(objectify.fromstring(cfdi).Emisor.get('Rfc', objectify.fromstring(cfdi).Emisor.get('rfc')))
+        _logger.warning("=========================")
         return objectify.fromstring(cfdi)
+
 
     @staticmethod
     def _l10n_mx_get_serie_and_folio(number):
