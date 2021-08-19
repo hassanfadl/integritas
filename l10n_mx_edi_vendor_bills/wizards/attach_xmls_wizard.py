@@ -148,12 +148,12 @@ class AttachXmlsWizard(models.TransientModel):
                 if not tax_group_id or not tax_get:
                     taxes_list['wrong_taxes'].append(name)
                     continue
-                if not tax_get.cash_basis_base_account_id.id:
+                if not tax_get.cash_basis_transition_account_id.id:
                     taxes_list['withno_account'].append(
                         name if name else tax['tax'])
                 else:
                     tax['id'] = tax_get.id
-                    tax['account'] = tax_get.cash_basis_base_account_id.id
+                    tax['account'] = tax_get.cash_basis_transition_account_id.id
                     tax['name'] = name if name else tax['tax']
                     taxes_list['taxes_ids'][index].append(tax)
         return taxes_list
@@ -260,7 +260,7 @@ class AttachXmlsWizard(models.TransientModel):
         else:
             domain.append(('amount_total', '>=', xml_amount - 1))
             domain.append(('amount_total', '<=', xml_amount + 1))
-            domain.append(('l10n_mx_edi_cfdi_name', '=', False))
+            #domain.append(('l10n_mx_edi_cfdi_name', '=', False))
             domain.append(('state', '!=', 'cancel'))
         invoice = inv_obj.search(domain, limit=1)
         exist_reference = invoice if invoice and xml_uuid != invoice.l10n_mx_edi_cfdi_uuid else False  # noqa
@@ -276,13 +276,14 @@ class AttachXmlsWizard(models.TransientModel):
             inv and inv.commercial_partner_id.vat or '').upper()
         inv_amount = inv.amount_total
         inv_folio = inv.ref or ''
-        domain = [('l10n_mx_edi_cfdi_name', '!=', False)]
+        #domain = [('l10n_mx_edi_cfdi_name', '!=', False)]
+        domain = []
         if exist_supplier:
             domain += [('partner_id', 'child_of', exist_supplier.id)]
         if xml_type_of_document == 'I':
-            domain += [('type', '=', 'in_invoice')]
+            domain += [('move_type', '=', 'in_invoice')]
         if xml_type_of_document == 'E':
-            domain += [('type', '=', 'in_refund')]
+            domain += [('move_type', '=', 'in_refund')]
         uuid_dupli = xml_uuid in inv_obj.search(domain).mapped(
             'l10n_mx_edi_cfdi_uuid')
         mxns = [
@@ -296,8 +297,8 @@ class AttachXmlsWizard(models.TransientModel):
         if xml_type_of_document == 'E' and hasattr(xml, 'CfdiRelacionados'):
             xml_related_uuid = xml.CfdiRelacionados.CfdiRelacionado.get('UUID')
             related_invoice = xml_related_uuid in inv_obj.search([
-                ('l10n_mx_edi_cfdi_name', '!=', False),
-                ('type', '=', 'in_invoice')]).mapped('l10n_mx_edi_cfdi_uuid')
+                #('l10n_mx_edi_cfdi_name', '!=', False),
+                ('move_type', '=', 'in_invoice')]).mapped('l10n_mx_edi_cfdi_uuid')
         omit_cfdi_related = self._context.get('omit_cfdi_related')
         force_save = False
         if self.env.user.has_group(
@@ -357,8 +358,10 @@ class AttachXmlsWizard(models.TransientModel):
             invoices.update({key: invoice_status})
             return {'wrongfiles': wrongfiles, 'invoices': invoices}
 
-        inv.l10n_mx_edi_cfdi = xml_str.decode('UTF-8')
-        inv.generate_xml_attachment()
+        #inv.l10n_mx_edi_cfdi = xml_str.decode('UTF-8')
+        #inv.generate_xml_attachment()
+        attach=inv.generate_xml_attachment(xml_str)
+        inv.generate_edi_document(attach)
         inv.reference = '%s|%s' % (xml_folio, xml_uuid.split('-')[0])
         invoices.update({key: {'invoice_id': inv.id}})
         if not float_is_zero(float(inv.amount_total) - xml_amount,
@@ -475,7 +478,7 @@ class AttachXmlsWizard(models.TransientModel):
         line_obj = self.env['account.move.line']
         prod_obj = self.env['product.product']
         prod_supplier_obj = self.env['product.supplierinfo']
-        sat_code_obj = self.env['l10n_mx_edi.product.sat.code']
+        #sat_code_obj = self.env['l10n_mx_edi.product.sat.code']
         uom_obj = uom_obj = self.env['uom.uom']
         xml_type_doc = xml.get('TipoDeComprobante', False)
         type_invoice = 'in_invoice' if xml_type_doc == 'I' else 'in_refund'
@@ -484,7 +487,7 @@ class AttachXmlsWizard(models.TransientModel):
             journal) if journal else inv_obj.with_context(
                 type=type_invoice)._default_journal()
         account_id = account_id or line_obj.with_context({
-            'journal_id': journal.id, 'type': 'in_invoice'})._default_account()
+            'journal_id': journal.id, 'move_type': 'in_invoice'})._default_account()
         invoice_line_ids = []
         msg = (_('Some products are not found in the system, and the account '
                  'that is used like default is not configured in the journal, '
@@ -526,8 +529,8 @@ class AttachXmlsWizard(models.TransientModel):
 
             domain_uom = [('name', '=ilike', uom)]
             line_taxes = [tax['id'] for tax in taxes.get(idx, [])]
-            code_sat = sat_code_obj.search([('code', '=', uom_code)], limit=1)
-            domain_uom = [('l10n_mx_edi_code_sat_id', '=', code_sat.id)]
+            #code_sat = sat_code_obj.search([('code', '=', uom_code)], limit=1)
+            domain_uom = [('unspsc_code_id', '=', uom_code)]
             uom_id = uom_obj.with_context(
                 lang='es_MX').search(domain_uom, limit=1)
 
@@ -575,8 +578,8 @@ class AttachXmlsWizard(models.TransientModel):
             'currency_id': (
                 currency_id.id or self.env.user.company_id.currency_id.id),
             'invoice_line_ids': invoice_line_ids,
-            'type': type_invoice,
-            'l10n_mx_edi_time_invoice': date_inv[1],
+            'move_type': type_invoice,
+            #'l10n_mx_edi_post_time': date_inv[1],
             'journal_id': journal.id,
         })
 
@@ -628,13 +631,15 @@ class AttachXmlsWizard(models.TransientModel):
                 percent = discount_amount * 100 / sub_total_amount
                 invoice_id.invoice_line_ids.write({'discount': percent})
 
-        invoice_id.l10n_mx_edi_cfdi = xml_str.decode('UTF-8')
-        invoice_id.generate_xml_attachment()
+        #invoice_id.l10n_mx_edi_cfdi = xml_str.decode('UTF-8')
+        #invoice_id.generate_xml_attachment()
+        attach=invoice_id.generate_xml_attachment(xml_str)
+        invoice_id.generate_edi_document(attach)
         if xml_type_doc == 'E' and hasattr(xml, 'CfdiRelacionados'):
             xml_related_uuid = xml.CfdiRelacionados.CfdiRelacionado.get('UUID')
             invoice_id._set_cfdi_origin('01', [xml_related_uuid])
             related_invoices = inv_obj.search([
-                ('partner_id', '=', supplier.id), ('type', '=', 'in_invoice')])
+                ('partner_id', '=', supplier.id), ('move_type', '=', 'in_invoice')])
             related_invoices = related_invoices.filtered(
                 lambda inv: inv.l10n_mx_edi_cfdi_uuid == xml_related_uuid)
             related_invoices.write({

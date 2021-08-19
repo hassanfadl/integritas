@@ -14,6 +14,7 @@
     'license': 'LGPL-3',
     'data': [
         'security/groups.xml',
+        'security/ir.model.access.csv',
         'views/assets.xml',
         'views/account_invoice_view.xml',
         'wizards/attach_xmls_wizard_view.xml',
