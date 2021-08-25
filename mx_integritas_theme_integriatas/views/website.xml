@@ -12,7 +12,7 @@
      <template id="mx_integritas_botton_flotante" inherit_id="web.frontend_layout" name="integritasFlotante">
         <!--expr="//body[@t-att-class='body_classname']"-->
         <xpath expr="//div[@id='wrapwrap']" position="inside">
-          <div id="whats-integritas"  style="width:18rem;height: 27rem;background-color: #F5EBDF;border-radius: 5px 5px 5px 5px;z-index:1400!important" class="flotante-cuadro invisible-ws font-ws">
+          <div id="whats-integritas"  style="width:18rem;height: 28.5rem;border-radius: 5px 5px 5px 5px;z-index:1400!important" class="flotante-cuadro invisible-ws font-ws">
             <table style="background:#075F56;width: 100%;height: 4rem;border-radius: 5px 5px 0px 0px">
               <tr style="margin-left: 1rem;margin-top:5px">
                         <td style="width: 50px;text-align: center">
@@ -34,34 +34,36 @@
             </table>
                 <table>
                     <tr>
-                        <td style="width:270px">
-                            <div style="border-radius: 5px 5px 5px 5px; width:100%; background:#FFFFFF!important;padding:1rem">
-                                <span style="font-size:.9rem;color:#000000!important;">Hola, ¿Te gustaría solicitar información o una cotización? Ingresa tu email y número telefónico para ponernos en contacto contigo.</span>
+                        <td style="width:200px">
+                            <i class="fa fa-2x fa-caret-down text-white" style="margin-left:.3rem;"></i>
+                            <div style="border-radius: 5px 5px 5px 5px; width:100%; background:#FFFFFF!important;padding:.7rem;margin-left:.8rem;margin-top:-1.4rem;">
+                                <p style="font-size:.9rem;color:#000000!important;" id="text_whatsapp">Escribiendo ...</p>
                             </div>
                         </td>
                     </tr>
 
                 </table>
-                <table>
+                <table id="second-conversation" class="invisible">
                     <tr>
                         <td style="width:80px"></td>
-                        <td style="width:300px">
-                            <div style="border-radius: 5px 5px 5px 5px; width:100%; background:#FFFFFF!important;padding:1rem">
+                        <td style="width:70px;padding-right:-5rem">
+                            <i class="fa fa-caret-down fa-2x" style="margin-left:11rem;color:#DCF8C6"></i>
+                            <div style="border-radius: 5px 5px 5px 5px; width:100%; background:#DCF8C6!important;padding:1rem;margin-left:-.5rem;margin-top:-1.4rem;">
                                 <form>
                                     <div style="margin-top:1px">
-                                        <input type="text" placeholder="Nombre"  class="form-control form-control-sm" name="wsintegritasname" required="true"/>
+                                        <input type="text" placeholder="Nombre"  class="form-control form-control-sm" name="wsintegritasname" required="true" style="background:#DCF8C6" />
                                     </div>
                                     <div style="margin-top:1px">
-                                        <input type="email" placeholder="Email"  class="form-control form-control-sm" name="wsintegritasemail" required="true"/>
+                                        <input type="email" placeholder="Email"  class="form-control form-control-sm" name="wsintegritasemail" required="true" style="background:#DCF8C6" />
                                     </div>
                                     <div style="margin-top:1px">
-                                        <input type="number" placeholder="Telefono" class="form-control form-control-sm" name="wsintegritasphone" required="true"/>
+                                        <input type="number" placeholder="Telefono" class="form-control form-control-sm" name="wsintegritasphone" min="0" required="true" style="background:#DCF8C6" />
                                     </div>
                                     <div style="line-height:1!important;font-size:.7rem!important">
                                         <small id="error_whatsapp" class="text-danger invisible">Campos incorrectos verifica que tu información sea válida.</small>
                                     </div>
                                     <div style="text-align:right;margin-top:2px">
-                                        <span  id="btn-integritas-ws-submit"  class="btn btn-sm" style="background-color:#075F56;color:#ffffff; ">Iniciar</span>
+                                        <span  id="btn-integritas-ws-submit"  class="btn btn-sm" style="background-color:#075F56;color:#ffffff; "><i class="fa fa-whatsapp"></i> Iniciar</span>
                                     </div>
                                     
                                 </form>
@@ -75,10 +77,15 @@
             <a  id="btn-whatsapp-integritas" class="flotante href-tel" target="_blank" style="cursor:pointer;">
               <img src="https://integritas.odoo.com/mx_integritas_theme_integriatas/static/src/img/whatsapp.png" class="img-fluid pulse" alt="" width="50rem" height="50rem"/>
             </a>
-            <a  id="btn-up-page" class="flotante-up"  target="_blank" style="cursor:pointer;background:#000000;color:#FFFFFF;border-radius:50%;width:30px;height:30px;text-align:center;">
-              <i class="fa fa-chevron-up"></i>
+            <a  id="btn-up-page" class="flotante-up"  target="_blank" style="cursor:pointer;background:rgba(64,126,201,.75);color:#FFFFFF;border-radius:50%;width:40px;height:40px;text-align:center;">
+              <i class="fa fa-chevron-up" style="margin-top:.6rem"></i>
             </a>
         </xpath>
       </template>
-  </data>
+
+      
+        
+
+    </data>
 </odoo>
+

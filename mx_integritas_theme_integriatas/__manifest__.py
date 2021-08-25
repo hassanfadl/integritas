@@ -13,7 +13,7 @@
     'website': "http://integritas.mx", 
     'category': 'Uncategorized',
     'version': '0.1',
-    'depends': ['base'],
+    'depends': ['base','website'],
     'data': [
         'views/views.xml',
         'views/templates.xml',

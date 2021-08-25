@@ -10,3 +10,8 @@ $(window).scroll(function(p, a){
   		$(".navbar-brand.logo span img").css("display","block");
   	}
 });
+document.querySelector("input[type=number]").addEventListener("keydown", function(event) {
+  if (event.which === 69) {
+    event.preventDefault();
+  }
+});
