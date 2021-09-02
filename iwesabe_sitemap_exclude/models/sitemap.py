@@ -10,7 +10,7 @@ LOC_PER_SITEMAP = 45000
 class Website(models.Model):
     _inherit = "website"
 
-    @api.multi
+    #@api.multi
     def enumerate_pages_2(self, query_string=None, force=False):
         """ Available pages in the website/CMS. This is mostly used for links
             generation and can be overridden by modules setting up new HTML
