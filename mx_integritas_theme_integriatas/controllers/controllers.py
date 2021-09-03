@@ -10,12 +10,16 @@ from datetime import datetime
 class MxIntegritasThemeIntegriatas(http.Controller):
 	@http.route(['/whatsapp/crear_oportunidad'], type='json', auth='public', methods=['POST'], website=True, csrf=False)
 	def create_oportunity(self, **post):
+		print("hola Cotizacion")
 		name = post.get('name')
 		email = post.get('email')
 		phone = post.get('phone')
+
 		bp=request.env['res.partner'].sudo().search([('email', '=', email)])
+
 		if len(bp)>1:
 			bp=request.env['res.partner'].sudo().search([('email', '=', email)])[0]
+        
 		if not bp:
 			bp=request.env['res.partner'].sudo().create({'name': name,'email':email,'phone':phone})
 
@@ -32,8 +36,13 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 	@http.route(['/whatsapp/get_text'], type='json', auth='public', methods=['POST'], website=True, csrf=False)
 	def getText(self, **post):
 		website_id = request.website.id
+
 		texto = "Hola, ¿Te gustaría solicitar información o una cotización? Ingresa tu email y número telefónico para ponernos en contacto contigo."
 		query = request.env['website'].sudo().search([('id', '=',website_id)])
 		if query.text_whatsapp:
 			texto = query.text_whatsapp
 		return texto
+	@http.route(['/whatsapp/request'], type='json', auth='public', methods=['POST'], website=True, csrf=False)
+	def getDataAPI(self, **post):
+		print(post)
+		return "Demo"

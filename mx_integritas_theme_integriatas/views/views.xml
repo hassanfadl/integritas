@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <record id="whatsapp_id_boton_integritas" model="ir.ui.view">
+    <!--<record id="whatsapp_id_boton_integritas" model="ir.ui.view">
         <field name="name">Boton Whatsapp Integritas</field>
         <field name="model" >website</field>
         <field name="inherit_id" ref="website.view_website_form"/>
@@ -11,6 +11,6 @@
               </page>     
             </xpath>
         </field>
-    </record>
+    </record>-->
   </data>
 </odoo>
