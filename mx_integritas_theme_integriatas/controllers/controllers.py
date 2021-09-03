@@ -2,10 +2,11 @@
 from odoo import http
 from odoo.http import request
 import requests
+import logging
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-
+_logger = logging.getLogger(__name__)
 
 class MxIntegritasThemeIntegriatas(http.Controller):
 	@http.route(['/whatsapp/crear_oportunidad'], type='json', auth='public', methods=['POST'], website=True, csrf=False)
@@ -44,5 +45,6 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 		return texto
 	@http.route(['/whatsapp/request'], type='json', auth='public', methods=['POST'], website=True, csrf=False)
 	def getDataAPI(self, **post):
-		print(post)
+		_logger.warning("=======")
+		_logger.warning(post)
 		return "Demo"
