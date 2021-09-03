@@ -4,6 +4,7 @@ from odoo.http import request
 import requests
 import logging
 import xml.etree.ElementTree as ET
+import asyncio
 from datetime import datetime
 
 _logger = logging.getLogger(__name__)
@@ -45,6 +46,7 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 		return texto
 	@http.route(['/whatsapp/request'], type='json', auth='public', methods=['POST'], website=True, csrf=False)
 	def getDataAPI(self, **post):
+		data = await async_get_data()
 		_logger.warning("=======")
 		_logger.warning(post.get("status"))
 		return "Demo"
