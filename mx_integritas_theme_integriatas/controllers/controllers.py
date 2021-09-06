@@ -49,5 +49,5 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 		_logger.warning(post.get("status"))
 		_logger.warning("==========")
 		_logger.warning(str(request))
-		_logger.warning(str(request.json))
+		
 		return 'success', 200
