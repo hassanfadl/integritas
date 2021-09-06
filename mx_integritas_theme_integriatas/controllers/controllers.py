@@ -46,6 +46,6 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 		return texto
 	@http.route(['/whatsapp/request'], type='json', auth='public', methods=['POST'], website=True, csrf=False)
 	async def getDataAPI(self, **post):
-		_logger.warning("======="+requests)
-		_logger.warning(post.get("status"))
+		#_logger.warning("======="+requests)
+		_logger.warning(requests)
 		return ""
