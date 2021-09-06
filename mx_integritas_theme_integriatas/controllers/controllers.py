@@ -48,4 +48,4 @@ class MxIntegritasThemeIntegriatas(http.Controller):
 	async def getDataAPI(self, **post):
 		_logger.warning("=======")
 		_logger.warning("==========")
-		return ""
+		return 'success', 200
