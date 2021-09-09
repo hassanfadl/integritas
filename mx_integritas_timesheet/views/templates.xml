@@ -49,7 +49,7 @@
                     <field name="email_to" >jose.torres@integritas.mx</field>
                     <field name="report_template" ref="report_timesheet_integritas_report" />
                     <field name="lang"></field>
-                    <field name="subject">Informe Mensual Soporte (Excedido) ${(object.remaining_hours * 100)/(object.effective_hours)} %</field>
+                    <field name="subject">Informe Mensual Soporte (Excedido) ${(object.remaining_hours * 100)/(object.planned_hours)} %</field>
                     <field name="auto_delete" eval="False"/>
                     <field name="body_html"><![CDATA[
 <table>
