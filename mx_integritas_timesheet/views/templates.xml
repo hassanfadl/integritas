@@ -1,0 +1,119 @@
+<odoo>
+    <data>
+        <record id="template_timesheet_integritas" model="mail.template">
+            <field name="name">Timesheet Email Integritas</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="email_from">${(object.user_id.email_formatted or user.email_formatted or '') | safe}</field>
+            <field name="email_to" >${object.partner_id.email}</field>
+            <field name="report_template" ref="report_timesheet_integritas_report" />
+            <field name="lang"></field>
+            <field name="subject">Informe Mensual Soporte</field>
+            <field name="email_cc">jose.torres@integritas.mx</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+<table>
+  <tbody>
+      <tr><br><br><img src="https://integritas.odoo.com/web/image/20390/Integritas.png" width="5%"/><br></tr>
+      <tr>
+        <div style="text-align: justify;">
+          <h2>Estimado ${object.partner_id.name},</h2>
+          <p>
+            Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/><br/>
+            Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
+            Soporte consumido el mes pasado: ${object.total_hours_spent} horas <br/>
+            % if not object.status_hours_exceded:
+              Horas restantes ${object.remaining_hours} horas <br> 
+            % else:
+              Horas Excedidas ${object.remaining_hours * -1} horas <br> 
+            % endif
+            <br/>
+          </p>
+        </div>
+      </tr>
+      <tr>
+        <div>
+          <br/><br/>
+          Cualquier duda estamos a sus órdenes. <br/>
+          ¡Gracias y saludos!<br/>
+          ¡Si puedes imaginarlo podemos programarlo!
+        </div>
+      </tr>
+    </tbody>
+  </table>
+]]></field>
+        </record>
+        <record id="template_timesheet_integritas_horas_excedidas" model="mail.template">
+                    <field name="name">Timesheet Email Integritas Horas Excedidas</field>
+                    <field name="model_id" ref="project.model_project_task"/>
+                    <field name="email_from">${(object.user_id.email_formatted or user.email_formatted or '') | safe}</field>
+                    <field name="email_to" >jose.torres@integritas.mx</field>
+                    <field name="report_template" ref="report_timesheet_integritas_report" />
+                    <field name="lang"></field>
+                    <field name="subject">Informe Mensual Soporte (Excedido) ${(object.effective_hours * 100)/(object.remaining_hours)} %</field>
+                    <field name="auto_delete" eval="False"/>
+                    <field name="body_html"><![CDATA[
+<table>
+  <tbody>
+      <tr><br><br><img src="https://integritas.odoo.com/web/image/20390/Integritas.png" width="5%"/><br></tr>
+      <tr>
+        <div style="text-align: justify;">
+          <h2>Estimado ${object.partner_id.name},</h2>
+          <p>
+            Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/><br/>
+            Horas disponibles para el mes pasado: ${object.planned_hours} horas <br/>
+            Soporte consumido el mes pasado: ${object.total_hours_spent} horas <br/>
+            
+            % if not object.status_hours_exceded:
+              Horas restantes ${object.remaining_hours} horas <br> 
+            % else:
+              Horas Excedidas ${object.remaining_hours * -1} horas <br> 
+            % endif
+            <br/>
+          </p>
+        </div>
+      </tr>
+      <tr>
+        <div>
+          <br/><br/>
+          Cualquier duda estamos a sus órdenes. <br/>
+          ¡Gracias y saludos!<br/>
+          ¡Si puedes imaginarlo podemos programarlo!
+        </div>
+      </tr>
+    </tbody>
+  </table>
+        ]]></field>
+        </record>
+
+    <record id="accion_planificada_parte_horas" model="ir.cron">
+          <field name="name">Demonio envío masivo de Correos</field>
+          <field name="model_id" ref="project.model_project_task"/>
+          <field name="numbercall">-1</field>
+          <field name="interval_number">1</field>
+          <field name="interval_type">months</field>
+          <field name="nextcall" eval="(datetime.now()+ timedelta(days=30)).strftime('%Y-%m-05 14:00:00')"></field>
+          <field name="state">code</field>
+          <field name="code">
+limit = 7
+count = 0
+project_id = env['project.project'].search([('name','ilike','Soporte')])[0].id
+model_task = env['project.task'].search([("parent_id","=", False),('is_email_timesheet_send','=',False),('name','ilike','Soporte'),('name','not ilike','Bolsa'),('name','not ilike','bolsa'), ('project_id.id','=',project_id)])
+month_before = datetime.datetime.now() - datetime.timedelta(days=30)
+for task in model_task:
+  if task.date_deadline:
+    if int(str(task.date_deadline.month)) &lt;= int(str(month_before.month)):
+      try:
+        #if count &lt; limit:
+        template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas')])[0] 
+        template_inst.send_mail(task.id)
+        task.write({'is_email_timesheet_send': True})
+        count = count + 1
+        if task.remaining_hours &lt; 0:
+          template_inst = env['mail.template'].search([('name','=','Timesheet Email Integritas Horas Excedidas')])[0] 
+          template_inst.send_mail(task.id)
+      except:
+        raise Warning("Error")
+          </field>  
+    </record>
+  </data>
+</odoo>

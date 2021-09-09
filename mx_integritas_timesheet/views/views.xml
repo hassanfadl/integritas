@@ -1,0 +1,89 @@
+<odoo>
+  <template id="report_timesheet_integritas">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>Reporte de Horas</h1>
+                    <strong>Estimad@ </strong><strong t-field="o.partner_id.name"></strong><br/>
+                    <p>Enviamos el detalle (adjunto) de horas consumidas durante el mes pasado.<br/>
+                    Horas disponibles para el mes pasado: <strong t-field="o.planned_hours"></strong> horas <br/>
+                    Soporte consumido el mes pasado: <strong t-field="o.total_hours_spent"></strong> horas <br/></p>
+                </div>
+                <div>
+                    <t t-set="count" t-value="0"/>
+                    <table style="border: 3px solid #C2C4C3;">
+                      <thead>
+                        <tr style="border: 3px solid #C2C4C3;">
+                          <th style="width:5%!important;text-align:center!important;border: 3px solid #C2C4C3;">#</th>
+                          <th style="width:10%!important;text-align:center!important;border: 3px solid #C2C4C3;">Fecha</th>
+                          <th style="width:15%!important;text-align:center!important;border: 3px solid #C2C4C3;">Responsable</th>
+                          <th style="width:50%!important;text-align:center!important;border: 3px solid #C2C4C3;">Descripción</th>
+                          <th style="width:20%!important;text-align:center!important;border: 3px solid #C2C4C3;">Duración (Hora)</th>
+                        </tr>
+                      </thead>
+                      <tbody style="border: 3px solid #C2C4C3;">
+                        
+                        <t t-foreach="o.timesheet_ids" t-as="line">
+                          <t t-set="count" t-value="count + 1"/>
+                          <tr>
+                            <th style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="count"></t></th>
+                            <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.date"></t></td>
+                            <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.employee_id.name"></t></td>
+                            <td style="text-align:left!important;border: 3px solid #C2C4C3;"><t t-esc="line.name"></t></td>
+                            <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="round(line.unit_amount,1)"></t></td>
+                          </tr>
+                        </t>
+                      </tbody>
+                      <tbody>
+                        <t t-foreach="o.child_ids" t-as="task">
+                          <t t-foreach="task.timesheet_ids" t-as="line">
+                            <t t-set="count" t-value="count + 1"/>
+                            <tr>
+                              <th style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="count"></t></th>
+                              <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.date"></t></td>
+                              <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="line.employee_id.name"></t></td>
+                              <td style="text-align:left!important;border: 3px solid #C2C4C3;"><t t-esc="line.name"></t></td>
+                              <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="round(line.unit_amount,1)"></t></td>
+                            </tr>
+                          </t>
+                        </t>
+                        
+                      </tbody>
+                      <tbody>
+                        <tr>
+                          <th style="text-align:center!important;border: 3px solid #C2C4C3;"></th>
+                          <td style="text-align:left!important;border: 3px solid #C2C4C3;"></td>
+                          <td style="text-align:left!important;border: 3px solid #C2C4C3;"></td>
+                          <td style="text-align:center!important;border: 3px solid #C2C4C3;">Total de Horas consumidas</td>
+                          <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="o.total_hours_spent"></t></td>
+                        </tr>
+                      </tbody>
+                      <tbody>
+                        <tr>
+                          <th style="text-align:center!important;border: 3px solid #C2C4C3;"></th>
+                          <td style="text-align:left!important;border: 3px solid #C2C4C3;"></td>
+                          <td style="text-align:left!important;border: 3px solid #C2C4C3;"></td>
+                          <td style="text-align:center!important;border: 3px solid #C2C4C3;">Total de Horas restantes</td>
+                          <td style="text-align:center!important;border: 3px solid #C2C4C3;"><t t-esc="round(o.remaining_hours,1)"></t></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+                <div><br/><br/><br/>
+                  Atte: Equipo de Integritas <br/>
+                  ¡Si puedes imaginarlo podemos programarlo!
+                </div>
+            </t>
+        </t>
+    </t>
+  </template>
+  <report
+      id="report_timesheet_integritas_report"
+      model="project.task"
+      string="Timesheet"
+      name="mx_integritas_timesheet.report_timesheet_integritas"
+      report_type="qweb-pdf"
+      print_report_name="'Informe_Mensual_Soporte'"
+  />
+</odoo>
